@@ -1,8 +1,11 @@
 /* Service worker del checklist de entrega del Omoda 5.
    Estrategia: red primero, caché como respaldo. Así siempre ves la última
-   versión si hay cobertura, y sigue funcionando en el sótano del concesionario. */
-const CACHE = 'checklist-omoda5-v2.1.0';
-const ASSETS = [
+   versión si hay cobertura, y sigue funcionando en el sótano del concesionario.
+   Al publicar cambios, sube el número de versión de esta línea. */
+const CACHE = 'checklist-omoda5-v2.2.0';
+
+/* Tienen que existir sí o sí: si uno falla, no se instala la caché. */
+const CORE = [
   './',
   './index.html',
   './manifest.webmanifest',
@@ -17,11 +20,19 @@ const ASSETS = [
   './assets/fonts/space-grotesk-latin-700-normal.woff2'
 ];
 
+/* Pueden faltar sin que pase nada. */
+const EXTRA = [
+  './assets/omoda5.png',
+  './assets/omoda-wordmark.svg'
+];
+
 self.addEventListener('install', e => {
   e.waitUntil(
-    caches.open(CACHE)
-      .then(c => c.addAll(ASSETS))
-      .then(() => self.skipWaiting())
+    caches.open(CACHE).then(c =>
+      c.addAll(CORE).then(() =>
+        Promise.all(EXTRA.map(u => c.add(u).catch(() => {})))
+      )
+    ).then(() => self.skipWaiting())
   );
 });
 

@@ -59,9 +59,9 @@
   .masthead{
     background:var(--ink);
     color:#F2F5F7;
-    margin:0 -14px 0;
-    padding:26px 20px 22px;
+    padding:24px 0 30px;
   }
+  .mh-inner{max-width:800px;margin:0 auto;padding:0 16px}
   .masthead .eyebrow{
     font-family:"IBM Plex Mono",monospace;
     font-size:11px;letter-spacing:.16em;text-transform:uppercase;
@@ -69,14 +69,19 @@
   }
   .masthead h1{
     font-family:"Space Grotesk",sans-serif;
-    font-weight:700;font-size:clamp(26px,6.5vw,38px);
-    line-height:1.06;letter-spacing:-.02em;margin:0 0 12px;
+    font-weight:700;font-size:clamp(27px,5.8vw,44px);
+    line-height:1.05;letter-spacing:-.022em;margin:0 0 16px;
   }
   .masthead .spec{
     font-family:"IBM Plex Mono",monospace;
-    font-size:12.5px;color:#A8BAC6;line-height:1.75;
+    font-size:clamp(11.5px,2.6vw,12.5px);color:#A8BAC6;line-height:1.75;margin:0;
   }
   .masthead .spec b{color:#E7EEF2;font-weight:500}
+  .mh-grid{display:grid;grid-template-columns:1fr;gap:18px;align-items:center}
+  @media (min-width:680px){
+    .mh-grid{grid-template-columns:1.04fr .96fr;gap:clamp(20px,4vw,44px)}
+    .masthead{padding:30px 0 36px}
+  }
 
   /* ---------- Barra de estado ---------- */
   .tally{
@@ -259,20 +264,26 @@
 
 
   /* ---------- Marca e ilustración ---------- */
-  .brandrow{display:flex;align-items:center;gap:11px;margin:0 0 22px}
+  .brandrow{display:flex;align-items:center;gap:11px;margin:0 0 clamp(18px,4vw,26px);flex-wrap:wrap}
   .mark{flex:none;width:30px;height:30px}
   .mark svg{width:100%;height:100%;display:block}
   .brandtxt{font-family:"IBM Plex Mono",monospace;font-size:10.5px;line-height:1.5;color:#8FA3B0;letter-spacing:.03em}
   .brandtxt b{color:#DCE7ED;font-weight:500}
-  .hero{margin:20px 0 18px;padding:0}
-  .hero img{display:none;width:100%;max-width:460px;border-radius:3px}
+  .oem{margin-left:auto;display:flex;flex-direction:column;align-items:flex-end;gap:4px}
+  .oem img{height:14px;width:auto;display:block;filter:brightness(0) invert(1);opacity:.7}
+  .oem em{font-family:"IBM Plex Mono",monospace;font-style:normal;font-size:8.5px;letter-spacing:.11em;text-transform:uppercase;color:#66798A}
+  .hero{margin:0;padding:0;min-width:0}
+  .hero img{display:none;width:100%;height:auto}
   .hero.haspic img{display:block}
   .hero.haspic .heroart{display:none}
-  .heroart{width:100%;max-width:440px;height:auto;display:block}
+  .heroart{width:100%;height:auto;display:block}
   .heroart .cl{fill:none;stroke:#5E7C90;stroke-width:3;stroke-linejoin:round;stroke-linecap:round}
   .heroart .cg{fill:none;stroke:#41596A;stroke-width:2.4;stroke-linejoin:round}
   .heroart .cm circle{fill:#7AA8C4}
-  .hero figcaption{font-family:"IBM Plex Mono",monospace;font-size:9.5px;color:#6F8492;margin-top:9px;max-width:440px;line-height:1.5}
+  .hero figcaption{font-family:"IBM Plex Mono",monospace;font-size:9.5px;color:#6F8492;margin-top:8px;line-height:1.5}
+  .cap-pic{display:none}
+  .hero.haspic .cap-art{display:none}
+  .hero.haspic .cap-pic{display:block}
   .offnote{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--ok);margin:12px 0 0}
 
   /* ---------- Configuración y filtros ---------- */
@@ -351,34 +362,44 @@
 </style>
 </head>
 <body>
-<div class="wrap">
-
-  <header class="masthead">
+<header class="masthead">
+  <div class="mh-inner">
     <div class="brandrow">
       <span class="mark" aria-hidden="true"><svg viewBox="0 0 32 32"><rect width="32" height="32" rx="7" fill="#7AA8C4"/><path d="M9 16.6l4.6 4.6L23 11" fill="none" stroke="#15191D" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-      <span class="brandtxt">Herramienta de la comunidad de<br><b>clubomoda5.com</b> · versión 2.1</span>
+      <span class="brandtxt">Herramienta de la comunidad de<br><b>clubomoda5.com</b> · versión 2.2</span>
+      <span class="oem"><img src="assets/omoda-wordmark.svg" alt="Omoda" onerror="this.closest('.oem').remove()"><em>Sitio no oficial</em></span>
     </div>
-    <p class="eyebrow">Revisión previa a la firma</p>
-    <h1>Checklist de entrega<br>del Omoda 5</h1>
-    <figure class="hero" id="hero">
-      <img src="assets/omoda5.jpg" alt="Omoda 5" onerror="this.remove()" onload="document.getElementById('hero').classList.add('haspic')">
-      <svg class="heroart" viewBox="0 0 660 200" role="img" aria-label="Ilustración de un SUV compacto visto de perfil, con los puntos de revisión marcados">
-        <polyline class="cl" points="10,150 8,122 20,105 72,96 122,92 176,58 252,34 400,30 470,50 542,92 600,100 626,116 630,150"/>
-        <line class="cl" x1="10" y1="150" x2="630" y2="150"/>
-        <polygon class="cg" points="190,62 258,44 388,41 446,62 452,88 196,88"/>
-        <line class="cg" x1="322" y1="42" x2="322" y2="88"/>
-        <circle class="cl" cx="122" cy="150" r="40"/><circle class="cg" cx="122" cy="150" r="19"/>
-        <circle class="cl" cx="505" cy="150" r="40"/><circle class="cg" cx="505" cy="150" r="19"/>
-        <g class="cm"><circle cx="24" cy="116" r="6"/><circle cx="198" cy="60" r="6"/><circle cx="505" cy="150" r="6"/><circle cx="620" cy="116" r="6"/></g>
-      </svg>
-      <figcaption>Ilustración propia. Los puntos marcan cuatro de las zonas donde más incidencias se han reportado.</figcaption>
-    </figure>
-    <p class="spec">
-      <b>129 puntos</b> para revisar el coche antes de firmar<br>
-      Gasolina · Híbrido SHS-H · Eléctrico EV, en cualquier acabado<br>
-      A partir de casos reales publicados por propietarios en el foro
-    </p>
-  </header>
+    <div class="mh-grid">
+      <div class="mh-text">
+        <p class="eyebrow">Revisión previa a la firma</p>
+        <h1>Checklist de entrega<br>del Omoda 5</h1>
+        <p class="spec">
+          <b>129 puntos</b> para revisar el coche antes de firmar<br>
+          Gasolina · Híbrido SHS-H · Eléctrico EV, en cualquier acabado<br>
+          A partir de casos reales publicados por propietarios en el foro
+        </p>
+      </div>
+      <figure class="hero" id="hero">
+        <img src="assets/omoda5.png" alt="Omoda 5 visto de tres cuartos" onerror="this.remove()" onload="document.getElementById('hero').classList.add('haspic')">
+        <svg class="heroart" viewBox="0 0 660 200" role="img" aria-label="Ilustración de un SUV compacto visto de perfil, con los puntos de revisión marcados">
+          <polyline class="cl" points="10,150 8,122 20,105 72,96 122,92 176,58 252,34 400,30 470,50 542,92 600,100 626,116 630,150"/>
+          <line class="cl" x1="10" y1="150" x2="630" y2="150"/>
+          <polygon class="cg" points="190,62 258,44 388,41 446,62 452,88 196,88"/>
+          <line class="cg" x1="322" y1="42" x2="322" y2="88"/>
+          <circle class="cl" cx="122" cy="150" r="40"/><circle class="cg" cx="122" cy="150" r="19"/>
+          <circle class="cl" cx="505" cy="150" r="40"/><circle class="cg" cx="505" cy="150" r="19"/>
+          <g class="cm"><circle cx="24" cy="116" r="6"/><circle cx="198" cy="60" r="6"/><circle cx="505" cy="150" r="6"/><circle cx="620" cy="116" r="6"/></g>
+        </svg>
+        <figcaption class="cap-art">Ilustración propia. Los puntos marcan cuatro de las zonas con más incidencias reportadas.</figcaption>
+        <figcaption class="cap-pic">Omoda 5 EV Premium.</figcaption>
+      </figure>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+
 
   <div class="tally">
     <div class="tally-row">
