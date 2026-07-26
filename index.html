@@ -318,6 +318,12 @@
   .item.st-na{background:#F1F3F4;opacity:.62}
   .states button[aria-pressed="true"][data-s="na"]{background:#6B7780;border-color:#6B7780;color:#fff}
   .item.hide{display:none}
+  .ptag{
+    display:inline-block;vertical-align:2px;margin-left:7px;
+    font-family:"IBM Plex Mono",monospace;font-size:9.5px;font-weight:500;
+    letter-spacing:.06em;color:var(--ink-faint);
+    border:1px dashed var(--line);padding:1px 5px;border-radius:2px;
+  }
   .mtag{
     display:inline-block;vertical-align:2px;margin-left:7px;
     font-family:"IBM Plex Mono",monospace;font-size:9.5px;font-weight:600;
@@ -331,7 +337,7 @@
   .acta .fields{margin:0 0 14px}
 
   /* ---------- Documento de impresión ---------- */
-  #printDoc{display:none}
+  #printDoc{display:none;padding:15mm 14mm 12mm}
   .pd{font-family:"IBM Plex Sans",system-ui,sans-serif;color:#000;font-size:10.5pt;line-height:1.4}
   .pd h1{font-size:17pt;margin:0 0 2mm;letter-spacing:-.01em}
   .pd .pdsub{margin:0 0 5mm;font-size:9pt;color:#444}
@@ -358,7 +364,7 @@
   }
   @media (prefers-reduced-motion:reduce){*{transition:none!important}}
   @media print{
-    @page{margin:13mm}
+    @page{margin:0}
     body{background:#fff}
     .wrap{display:none!important}
     #printDoc{display:block!important}
@@ -370,7 +376,7 @@
   <div class="mh-inner">
     <div class="brandrow">
       <span class="mark" aria-hidden="true"><svg viewBox="0 0 32 32"><rect width="32" height="32" rx="7" fill="#7AA8C4"/><path d="M9 16.6l4.6 4.6L23 11" fill="none" stroke="#15191D" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-      <span class="brandtxt">Herramienta de la comunidad de<br><b>clubomoda5.com</b> · versión 2.2</span>
+      <span class="brandtxt">Herramienta de la comunidad de<br><b>clubomoda5.com</b> · versión 2.3</span>
       <span class="oem"><img src="assets/omoda-wordmark.svg" alt="Omoda" onerror="this.closest('.oem').remove()"><em>Sitio no oficial</em></span>
     </div>
     <div class="mh-grid">
@@ -632,7 +638,7 @@ const DATA = [
  {t:"Frenada regenerativa", d:"Prueba los distintos niveles y, si lo tiene, el modo de un solo pedal. La retención debe ser progresiva, sin escalones."},
  {t:"Consumo y autonomía coherentes", d:"La estimación restante no debería dar saltos absurdos al cambiar de vía o al soltar el acelerador."}
 ]},
-{n:"Antes de firmar", note:"Conviene saber cómo funciona esto de verdad, porque circula mucho el consejo de «no firmes nada» y a estas alturas ya no aplica. Cuando llegas a recoger el coche, el pedido está firmado desde hace meses, la financiación también, y el vehículo ya está matriculado a tu nombre. El único documento que queda en tu mano es el de conformidad de la entrega. No se trata de negarte a firmarlo: se trata de firmarlo haciendo constar lo que has encontrado.", items:[
+{n:"Antes de firmar", note:"Conviene saber cómo funciona esto de verdad, porque circula mucho el consejo de «no firmes nada» y a estas alturas ya no aplica. Cuando llegas a recoger el coche, el pedido está firmado desde hace meses, la financiación también, y el vehículo ya está matriculado a tu nombre. El único documento que queda en tu mano es el de conformidad de la entrega. No se trata de negarte a firmarlo: se trata de firmarlo haciendo constar lo que has encontrado. Los puntos de esta sección son recordatorios para ti y no se incluyen en el acta, porque describen lo que tienes que hacer, no el estado del coche.", items:[
  {t:"Vídeo continuo del coche entero", d:"Vuelta completa por fuera y recorrido por dentro, antes de firmar nada. Con fecha.", k:1},
  {t:"Todo defecto, por escrito en el acta de entrega", d:"Cada punto que hayas marcado, con fecha comprometida de reparación. No aceptes un compromiso verbal.", f:"El caso del retrovisor rayado del foro se resolvió a base de insistir. Otro forero lo resume: has pagado por una cosa perfecta, no con desperfectos.", k:1},
  {t:"Nada de eso te lo pulimos luego", d:"Si no está escrito y con plazo, no existe. Pulir tiene además un límite: si no sale, tienen que pintar o cambiar la pieza."},
@@ -909,6 +915,17 @@ const MOTOR={};
 DATA.forEach((sec,si)=>sec.items.forEach((it,ii)=>{
   for(const m in MOTORBY){ if(MOTORBY[m].indexOf(it.t)>=0) MOTOR[si+'-'+ii]=m; }
 }));
+
+/* Puntos que son método de trabajo o recordatorio para el comprador.
+   Se comprueban en pantalla pero no tienen sentido dentro del acta. */
+const PROCBY=["Condiciones de revisión correctas","Panel a panel en diagonal",
+ "Vídeo y fotos del exterior completo","Seguro del coche activo desde hoy","Contacto de posventa",
+ "Vídeo continuo del coche entero","Todo defecto, por escrito en el acta de entrega",
+ "Nada de eso te lo pulimos luego","Valora aplazar la entrega","Copia firmada y sellada de todo",
+ "Kilómetros, fecha y hora anotados","Acta enviada al comercial hoy mismo",
+ "Firma con reservas, nunca en blanco","Ten presente la garantía legal"];
+const PROC={};
+DATA.forEach((sec,si)=>sec.items.forEach((it,ii)=>{ if(PROCBY.indexOf(it.t)>=0) PROC[si+'-'+ii]=1; }));
 const SLBL={ok:"Conforme",watch:"A revisar",ko:"Defecto",na:"No aplica"};
 
 /* ---------- Render ---------- */
@@ -930,7 +947,7 @@ DATA.forEach((sec,si)=>{
     html+=`<div class="item" id="i${id}">
       <div class="code"><a class="code" href="#i${id}" title="Enlace a este punto">${code}</a></div>
       <div class="body">
-        <span class="t">${it.t}${it.k?'<span class="key">Clave</span>':''}${mt?`<span class="mtag">${MLBL[mt]}</span>`:''}</span>
+        <span class="t">${it.t}${it.k?'<span class="key">Clave</span>':''}${mt?`<span class="mtag">${MLBL[mt]}</span>`:''}${PROC[id]?'<span class="ptag" title="Es para ti: no aparece en el acta">No va al acta</span>':''}</span>
         <p class="d">${it.d}</p>
         ${(it.f||LINKS[id])?`<div class="forum"><b>Foro</b>${it.f||''}${flinks(id)}</div>`:''}
         ${VIS[id]?`<button class="figbtn" data-fig="${id}" aria-expanded="false">${VIS[id].b}</button>
@@ -1060,7 +1077,7 @@ function actaData(){
     const its=[];
     sec.items.forEach((it,ii)=>{
       const id=`${si}-${ii}`;
-      if(!applies(id))return;
+      if(!applies(id)||PROC[id])return;
       const e=state.items[id]||{};
       if(e.s==='ok')o++;else if(e.s==='watch')w++;else if(e.s==='ko')k++;else if(e.s==='na')na++;else p++;
       its.push({code:`${String(si+1).padStart(2,'0')}.${String(ii+1).padStart(2,'0')}`,t:it.t,s:e.s||null,n:e.n||''});
@@ -1074,7 +1091,7 @@ function actaData(){
 function buildPrint(){
   const f=state.fields, d=actaData();
   let h=`<div class="pd"><h1>Acta de recepción del vehículo</h1>
-   <p class="pdsub">Omoda 5 · ${MNAME[state.motor]} · revisión previa a la firma · generada el ${new Date().toLocaleDateString('es-ES')}</p>
+   <p class="pdsub">Omoda 5 · ${MNAME[state.motor]} · documento generado el ${new Date().toLocaleDateString('es-ES')}</p>
    <table class="pdid"><tbody>
     <tr><th>Fecha</th><td>${esc(f.fFecha)||'&nbsp;'}</td><th>Matrícula</th><td>${esc(f.fMat)||'&nbsp;'}</td></tr>
     <tr><th>VIN</th><td>${esc(f.fVin)||'&nbsp;'}</td><th>Kilómetros</th><td>${esc(f.fKm)||'&nbsp;'}</td></tr>
@@ -1088,14 +1105,14 @@ function buildPrint(){
   }else{
     h+='<h2>Incidencias</h2><p class="sum">No se ha registrado ninguna incidencia en esta revisión.</p>';
   }
-  h+='<h2>Revisión completa, punto por punto</h2><table class="lst"><tbody>';
+  h+='<h2>Estado del vehículo, punto por punto</h2><table class="lst"><tbody>';
   d.rows.forEach(r=>{
     h+=`<tr class="grp"><td colspan="3">${esc(r.n)}</td></tr>`;
     r.its.forEach(i=>{h+=`<tr><td class="c">${i.code}</td><td class="s${i.s==='ko'?' ko':''}">${i.s?SLBL[i.s]:'sin comprobar'}</td><td>${esc(i.t)}${i.n?`<span class="nt">${esc(i.n)}</span>`:''}</td></tr>`;});
   });
   h+=`</tbody></table>
    <div class="sign"><div>Firma del comprador</div><div>Firma y sello del concesionario</div></div>
-   <p class="foot">Generado con la lista de comprobación de la comunidad de clubomoda5.com. Documento de uso privado entre comprador y vendedor; no sustituye al documento oficial de entrega.</p></div>`;
+   <p class="foot">Documento de uso privado entre comprador y vendedor. No sustituye al documento oficial de entrega del concesionario.</p></div>`;
   document.getElementById('printDoc').innerHTML=h;
 }
 function actaText(){
@@ -1139,7 +1156,13 @@ async function copy(txt,btn,label){
   catch(err){ const o=document.getElementById('actaOut'); o.value=txt; o.classList.add('show'); o.select(); btn.textContent='Selecciona y copia'; }
   setTimeout(()=>{btn.textContent=label;},1800);
 }
-document.getElementById('btnPrint').addEventListener('click',()=>{buildPrint();window.print();});
+document.getElementById('btnPrint').addEventListener('click',()=>{
+  buildPrint();
+  const t=document.title;
+  document.title='Acta de recepción del vehículo';
+  window.addEventListener('afterprint',()=>{document.title=t;},{once:true});
+  window.print();
+});
 document.getElementById('btnGen').addEventListener('click',()=>{
   const o=document.getElementById('actaOut');
   o.value=actaText(); o.classList.add('show'); if(o.scrollIntoView)o.scrollIntoView({behavior:'smooth',block:'nearest'});
