@@ -1,0 +1,56 @@
+name: Falta un punto
+description: Algo que te encontraste en tu entrega y que la lista no recoge
+title: "[Punto] "
+labels: ["punto nuevo"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Gracias por aportar. Cuanto más concreto sea, antes se puede añadir.
+  - type: dropdown
+    id: motor
+    attributes:
+      label: Motorización
+      options:
+        - Gasolina
+        - Híbrido SHS-H
+        - Eléctrico EV
+        - Afecta a todas
+    validations:
+      required: true
+  - type: dropdown
+    id: seccion
+    attributes:
+      label: ¿En qué sección encajaría?
+      options:
+        - Documentación y administrativo
+        - Carrocería y exterior
+        - Ruedas, bajos y dotación
+        - Interior y acabados
+        - Electrónica, multimedia y confort
+        - Prueba en marcha
+        - Antes de firmar
+        - No lo tengo claro
+    validations:
+      required: true
+  - type: textarea
+    id: que
+    attributes:
+      label: ¿Qué hay que comprobar?
+      description: Explícalo como si se lo contaras a alguien que recoge el coche mañana.
+      placeholder: "Ej.: la tapa del gancho de remolque del paragolpes trasero venía sin los clips y se cayó a los tres días."
+    validations:
+      required: true
+  - type: input
+    id: hilo
+    attributes:
+      label: Hilo del foro (opcional)
+      description: Si lo comentaste en clubomoda5.com, pega aquí el enlace.
+      placeholder: https://www.clubomoda5.com/threads/...
+  - type: checkboxes
+    id: propio
+    attributes:
+      label: Confirmación
+      options:
+        - label: Me ha pasado a mí o lo he visto documentado, no es una suposición.
+          required: true

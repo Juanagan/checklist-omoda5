@@ -1,0 +1,49 @@
+/* Service worker del checklist de entrega del Omoda 5.
+   Estrategia: red primero, caché como respaldo. Así siempre ves la última
+   versión si hay cobertura, y sigue funcionando en el sótano del concesionario. */
+const CACHE = 'checklist-omoda5-v2.1.0';
+const ASSETS = [
+  './',
+  './index.html',
+  './manifest.webmanifest',
+  './assets/icon-180.png',
+  './assets/icon-192.png',
+  './assets/icon-512.png',
+  './assets/og.png',
+  './assets/fonts/ibm-plex-sans-latin-400-normal.woff2',
+  './assets/fonts/ibm-plex-sans-latin-600-normal.woff2',
+  './assets/fonts/ibm-plex-mono-latin-400-normal.woff2',
+  './assets/fonts/ibm-plex-mono-latin-600-normal.woff2',
+  './assets/fonts/space-grotesk-latin-700-normal.woff2'
+];
+
+self.addEventListener('install', e => {
+  e.waitUntil(
+    caches.open(CACHE)
+      .then(c => c.addAll(ASSETS))
+      .then(() => self.skipWaiting())
+  );
+});
+
+self.addEventListener('activate', e => {
+  e.waitUntil(
+    caches.keys()
+      .then(ks => Promise.all(ks.filter(k => k !== CACHE).map(k => caches.delete(k))))
+      .then(() => self.clients.claim())
+  );
+});
+
+self.addEventListener('fetch', e => {
+  const req = e.request;
+  if (req.method !== 'GET') return;
+  if (new URL(req.url).origin !== location.origin) return;
+  e.respondWith(
+    fetch(req)
+      .then(res => {
+        const copy = res.clone();
+        caches.open(CACHE).then(c => c.put(req, copy)).catch(() => {});
+        return res;
+      })
+      .catch(() => caches.match(req).then(m => m || caches.match('./index.html')))
+  );
+});

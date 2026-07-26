@@ -1,0 +1,22 @@
+name: Error o corrección
+description: Un dato equivocado, un texto confuso, un enlace roto o un fallo de la página
+title: "[Corrección] "
+labels: ["corrección"]
+body:
+  - type: input
+    id: codigo
+    attributes:
+      label: Código del punto
+      description: El número que aparece a la izquierda de cada punto, por ejemplo 02.06. Déjalo vacío si es un fallo general.
+      placeholder: "02.06"
+  - type: textarea
+    id: problema
+    attributes:
+      label: ¿Qué está mal?
+    validations:
+      required: true
+  - type: input
+    id: entorno
+    attributes:
+      label: Móvil y navegador (si es un fallo de la página)
+      placeholder: "iPhone 14, Safari"

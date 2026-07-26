@@ -1,0 +1,17 @@
+{
+  "name": "Checklist de entrega · Omoda 5",
+  "short_name": "Checklist O5",
+  "description": "Lista de comprobación para revisar un Omoda 5 antes de firmar la entrega. Gasolina, híbrido SHS-H y eléctrico EV.",
+  "lang": "es",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#15191D",
+  "theme_color": "#15191D",
+  "icons": [
+    { "src": "assets/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "assets/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "assets/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}

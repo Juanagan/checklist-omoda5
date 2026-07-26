@@ -3,12 +3,29 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Acta de recepción · Omoda 5 SHS-H Premium</title>
-<meta name="description" content="Checklist de revisión previa a la firma para la entrega de un Omoda 5 SHS-H Premium, con los puntos reportados por propietarios en el foro.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+<title>Checklist de entrega · Omoda 5 · revisión antes de firmar</title>
+<meta name="description" content="Lista de comprobación para el día de recoger un Omoda 5, en cualquiera de sus motorizaciones. 130 puntos con los fallos de entrega reportados por propietarios en clubomoda5.com, esquemas de las piezas difíciles de identificar y generación del acta en PDF.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Checklist de entrega del Omoda 5">
+<meta property="og:description" content="130 puntos para revisar el coche antes de firmar. Gasolina, híbrido SHS-H y eléctrico EV. Con los casos reales publicados en el foro y acta imprimible en PDF.">
+<meta name="twitter:card" content="summary">
+<meta property="og:image" content="https://juanagan.github.io/checklist-omoda5/assets/og.png">
+<meta property="og:url" content="https://juanagan.github.io/checklist-omoda5/">
+<meta name="twitter:image" content="https://juanagan.github.io/checklist-omoda5/assets/og.png">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#15191D">
+<link rel="icon" href="assets/icon-192.png">
+<link rel="apple-touch-icon" href="assets/icon-180.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Checklist O5">
 <style>
+  /* Tipografías alojadas aquí mismo: sin peticiones a terceros y disponibles sin conexión */
+  @font-face{font-family:"IBM Plex Sans";src:url("assets/fonts/ibm-plex-sans-latin-400-normal.woff2") format("woff2");font-weight:400;font-display:swap}
+  @font-face{font-family:"IBM Plex Sans";src:url("assets/fonts/ibm-plex-sans-latin-600-normal.woff2") format("woff2");font-weight:500 600;font-display:swap}
+  @font-face{font-family:"IBM Plex Mono";src:url("assets/fonts/ibm-plex-mono-latin-400-normal.woff2") format("woff2");font-weight:400;font-display:swap}
+  @font-face{font-family:"IBM Plex Mono";src:url("assets/fonts/ibm-plex-mono-latin-600-normal.woff2") format("woff2");font-weight:500 600;font-display:swap}
+  @font-face{font-family:"Space Grotesk";src:url("assets/fonts/space-grotesk-latin-700-normal.woff2") format("woff2");font-weight:500 700;font-display:swap}
+
   :root{
     --ink:#15191D;
     --ink-soft:#525E68;
@@ -239,17 +256,97 @@
     border-top:1px solid var(--line);padding-top:14px;
   }
 
+
+
+  /* ---------- Marca e ilustración ---------- */
+  .brandrow{display:flex;align-items:center;gap:11px;margin:0 0 22px}
+  .mark{flex:none;width:30px;height:30px}
+  .mark svg{width:100%;height:100%;display:block}
+  .brandtxt{font-family:"IBM Plex Mono",monospace;font-size:10.5px;line-height:1.5;color:#8FA3B0;letter-spacing:.03em}
+  .brandtxt b{color:#DCE7ED;font-weight:500}
+  .hero{margin:20px 0 18px;padding:0}
+  .hero img{display:none;width:100%;max-width:460px;border-radius:3px}
+  .hero.haspic img{display:block}
+  .hero.haspic .heroart{display:none}
+  .heroart{width:100%;max-width:440px;height:auto;display:block}
+  .heroart .cl{fill:none;stroke:#5E7C90;stroke-width:3;stroke-linejoin:round;stroke-linecap:round}
+  .heroart .cg{fill:none;stroke:#41596A;stroke-width:2.4;stroke-linejoin:round}
+  .heroart .cm circle{fill:#7AA8C4}
+  .hero figcaption{font-family:"IBM Plex Mono",monospace;font-size:9.5px;color:#6F8492;margin-top:9px;max-width:440px;line-height:1.5}
+  .offnote{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--ok);margin:12px 0 0}
+
+  /* ---------- Configuración y filtros ---------- */
+  .segbar{display:flex;gap:6px;flex-wrap:wrap;margin:0 0 10px}
+  .segbar button{
+    font-family:"IBM Plex Mono",monospace;font-size:11.5px;font-weight:500;
+    letter-spacing:.04em;padding:8px 13px;border:1px solid var(--line);
+    background:#fff;color:var(--ink-soft);border-radius:99px;cursor:pointer;transition:all .12s ease;
+  }
+  .segbar button:hover{border-color:var(--ink-faint)}
+  .segbar button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+  .segbar button[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:#fff}
+  #filterSel button[aria-pressed="true"]{background:var(--ink);border-color:var(--ink)}
+
+  /* ---------- Índice de secciones ---------- */
+  .secnav{display:flex;gap:6px;overflow-x:auto;padding:0 0 14px;margin:0 0 8px;-webkit-overflow-scrolling:touch}
+  .secnav::-webkit-scrollbar{height:0}
+  .secnav a{
+    flex:none;font-family:"IBM Plex Mono",monospace;font-size:11px;text-decoration:none;
+    color:var(--ink-soft);background:var(--surface);border:1px solid var(--line);
+    border-radius:99px;padding:7px 12px;white-space:nowrap;transition:all .12s ease;
+  }
+  .secnav a:hover{border-color:var(--accent);color:var(--accent)}
+  .secnav a b{font-weight:600;color:var(--accent);margin-left:6px}
+  .secnav a.done b{color:var(--ok)}
+
+  /* ---------- Estados y etiquetas ---------- */
+  .item.st-na{background:#F1F3F4;opacity:.62}
+  .states button[aria-pressed="true"][data-s="na"]{background:#6B7780;border-color:#6B7780;color:#fff}
+  .item.hide{display:none}
+  .mtag{
+    display:inline-block;vertical-align:2px;margin-left:7px;
+    font-family:"IBM Plex Mono",monospace;font-size:9.5px;font-weight:600;
+    letter-spacing:.09em;text-transform:uppercase;color:var(--accent);
+    border:1px solid var(--accent);padding:1px 5px;border-radius:2px;
+  }
+  a.code{color:var(--ink-faint);text-decoration:none;border-bottom:1px dotted var(--line)}
+  a.code:hover{color:var(--accent);border-color:var(--accent)}
+  .item:target{box-shadow:inset 3px 0 0 var(--accent)}
+  .acta .field label{color:#93A7B4}
+  .acta .fields{margin:0 0 14px}
+
+  /* ---------- Documento de impresión ---------- */
+  #printDoc{display:none}
+  .pd{font-family:"IBM Plex Sans",system-ui,sans-serif;color:#000;font-size:10.5pt;line-height:1.4}
+  .pd h1{font-size:17pt;margin:0 0 2mm;letter-spacing:-.01em}
+  .pd .pdsub{margin:0 0 5mm;font-size:9pt;color:#444}
+  .pd table{width:100%;border-collapse:collapse;margin:0 0 5mm}
+  .pd .pdid td,.pd .pdid th{border:1px solid #999;padding:1.6mm 2mm;font-size:9pt;text-align:left}
+  .pd .pdid th{background:#EEE;width:16%;font-weight:600}
+  .pd h2{font-size:11pt;margin:6mm 0 2mm;border-bottom:1.5pt solid #000;padding-bottom:1mm}
+  .pd .sum{font-size:9.5pt;margin:0 0 4mm}
+  .pd .sum span{margin-right:5mm}
+  .pd .lst{width:100%;border-collapse:collapse}
+  .pd .lst td{border-bottom:.5pt solid #BBB;padding:1.4mm 2mm;font-size:9pt;vertical-align:top}
+  .pd .lst td.c{width:13mm;font-family:"IBM Plex Mono",monospace;color:#555;white-space:nowrap}
+  .pd .lst td.s{width:24mm;font-family:"IBM Plex Mono",monospace;font-size:8pt;white-space:nowrap}
+  .pd .lst tr.grp td{background:#EEE;font-weight:600;font-size:9.5pt;border-bottom:1pt solid #000}
+  .pd .nt{display:block;color:#333;font-style:italic;margin-top:.6mm}
+  .pd .ko{color:#000;font-weight:700}
+  .pd .sign{margin-top:8mm;font-size:9pt;display:flex;gap:10mm}
+  .pd .sign div{flex:1;border-top:.5pt solid #000;padding-top:1.5mm}
+  .pd .foot{margin-top:6mm;font-size:8pt;color:#555;border-top:.5pt solid #999;padding-top:2mm}
+
   @media (max-width:520px){
     .item{grid-template-columns:1fr;gap:0}
     .code{padding-bottom:4px}
   }
   @media (prefers-reduced-motion:reduce){*{transition:none!important}}
   @media print{
+    @page{margin:13mm}
     body{background:#fff}
-    .tally,.acta,.states,.figbtn{display:none}
-    .figwrap{display:block!important;break-inside:avoid}
-    .item,.panel,.sec-note{border-color:#999}
-    .note{display:block!important;border-color:#999}
+    .wrap{display:none!important}
+    #printDoc{display:block!important}
   }
 </style>
 </head>
@@ -257,12 +354,29 @@
 <div class="wrap">
 
   <header class="masthead">
+    <div class="brandrow">
+      <span class="mark" aria-hidden="true"><svg viewBox="0 0 32 32"><rect width="32" height="32" rx="7" fill="#7AA8C4"/><path d="M9 16.6l4.6 4.6L23 11" fill="none" stroke="#15191D" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      <span class="brandtxt">Herramienta de la comunidad de<br><b>clubomoda5.com</b> · versión 2.1</span>
+    </div>
     <p class="eyebrow">Revisión previa a la firma</p>
-    <h1>Acta de recepción<br>del vehículo</h1>
+    <h1>Checklist de entrega<br>del Omoda 5</h1>
+    <figure class="hero" id="hero">
+      <img src="assets/omoda5.jpg" alt="Omoda 5" onerror="this.remove()" onload="document.getElementById('hero').classList.add('haspic')">
+      <svg class="heroart" viewBox="0 0 660 200" role="img" aria-label="Ilustración de un SUV compacto visto de perfil, con los puntos de revisión marcados">
+        <polyline class="cl" points="10,150 8,122 20,105 72,96 122,92 176,58 252,34 400,30 470,50 542,92 600,100 626,116 630,150"/>
+        <line class="cl" x1="10" y1="150" x2="630" y2="150"/>
+        <polygon class="cg" points="190,62 258,44 388,41 446,62 452,88 196,88"/>
+        <line class="cg" x1="322" y1="42" x2="322" y2="88"/>
+        <circle class="cl" cx="122" cy="150" r="40"/><circle class="cg" cx="122" cy="150" r="19"/>
+        <circle class="cl" cx="505" cy="150" r="40"/><circle class="cg" cx="505" cy="150" r="19"/>
+        <g class="cm"><circle cx="24" cy="116" r="6"/><circle cx="198" cy="60" r="6"/><circle cx="505" cy="150" r="6"/><circle cx="620" cy="116" r="6"/></g>
+      </svg>
+      <figcaption>Ilustración propia. Los puntos marcan cuatro de las zonas donde más incidencias se han reportado.</figcaption>
+    </figure>
     <p class="spec">
-      <b>OMODA 5 SHS-H Premium</b> · 1.5 TGDI · 165 kW<br>
-      Color <b>Negro Ópalo</b><br>
-      Puntos extraídos de casos reales publicados en clubomoda5.com
+      <b>129 puntos</b> para revisar el coche antes de firmar<br>
+      Gasolina · Híbrido SHS-H · Eléctrico EV, en cualquier acabado<br>
+      A partir de casos reales publicados por propietarios en el foro
     </p>
   </header>
 
@@ -284,45 +398,74 @@
     <h2>Antes de ir</h2>
     <p class="lead">La lección que más se repite en el foro: los defectos que no detectas ese día se convierten en tu palabra contra la suya. Un propietario vio el retrovisor rayado a los dos días y ya no pudo demostrar que venía así.</p>
     <ul>
-      <li><b>Reserva 90 minutos</b> y ve de día. Un Negro Ópalo bajo fluorescentes de taller no enseña nada.</li>
+      <li><b>Reserva 90 minutos</b> y ve de día. Los fluorescentes de un taller no enseñan nada; la luz natural sí.</li>
       <li><b>El coche tiene que estar seco.</b> Varios foreros cuentan que los vehículos se almacenan a la intemperie y se lavan justo antes de entregar; el agua y el abrillantador tapan microrayas y hologramas. Si te lo sacan mojado, espera a que seque.</li>
       <li><b>No firmes nada antes de terminar la revisión.</b> Ni la conformidad, ni la matriculación, ni la financiación.</li>
-      <li><b>Lleva:</b> linterna, una microfibra limpia, tu móvil con batería (para el cargador inalámbrico y CarPlay), y un acompañante para probar luces desde fuera.</li>
+      <li><b>Lleva:</b> linterna, una microfibra limpia, tu móvil con batería (para el cargador inalámbrico y CarPlay) y un acompañante para probar las luces desde fuera.</li>
       <li><b>Lleva el pedido impreso</b> con el equipamiento y los extras pactados, para contrastarlos uno a uno.</li>
     </ul>
-    <div class="fields">
-      <div class="field"><label for="fFecha">Fecha</label><input id="fFecha" type="date"></div>
-      <div class="field"><label for="fConce">Concesionario</label><input id="fConce" type="text" placeholder="Nombre"></div>
-      <div class="field"><label for="fVin">VIN</label><input id="fVin" type="text" placeholder="17 caracteres"></div>
-      <div class="field"><label for="fMat">Matrícula</label><input id="fMat" type="text" placeholder="0000 XXX"></div>
-      <div class="field"><label for="fKm">Kilómetros</label><input id="fKm" type="text" placeholder="km del cuadro"></div>
-      <div class="field"><label for="fCom">Comercial</label><input id="fCom" type="text" placeholder="Nombre"></div>
+  </div>
+
+  <div class="panel">
+    <h2>Ajusta la lista a tu coche</h2>
+    <p class="lead">Elige tu motorización y se ocultan los puntos que no te tocan. Del equipamiento no te preocupes: lo que tu acabado no lleve, márcalo como <b>no aplica</b> y desaparece de las cuentas y del acta.</p>
+    <div class="segbar" id="motorSel" role="group" aria-label="Motorización">
+      <button data-m="all" aria-pressed="true">Todas</button>
+      <button data-m="g" aria-pressed="false">Gasolina</button>
+      <button data-m="h" aria-pressed="false">Híbrido SHS-H</button>
+      <button data-m="e" aria-pressed="false">Eléctrico EV</button>
+    </div>
+    <div class="segbar" id="filterSel" role="group" aria-label="Filtros de la lista">
+      <button data-f="key" aria-pressed="false">Solo puntos clave</button>
+      <button data-f="pend" aria-pressed="false">Ocultar los ya marcados</button>
     </div>
   </div>
 
+  <nav class="secnav" id="secnav" aria-label="Ir a una sección"></nav>
+
   <main id="sections"></main>
 
-  <div class="acta">
-    <h2>Generar el acta</h2>
-    <p>Reúne todo lo que has marcado como <b>a revisar</b> o <b>defecto</b>, con tus notas. Cópialo, hazlo constar por escrito en la entrega y envíaselo al comercial por email el mismo día.</p>
+  <div class="acta" id="acta">
+    <h2>El acta de entrega</h2>
+    <p>Rellena estos datos al terminar, no antes. Todo se queda guardado en tu navegador: nada viaja a ningún servidor, ni siquiera el VIN.</p>
+    <div class="fields">
+      <div class="field"><label for="fFecha">Fecha</label><input id="fFecha" type="date"></div>
+      <div class="field"><label for="fConce">Concesionario</label><input id="fConce" type="text" placeholder="Nombre"></div>
+      <div class="field"><label for="fCom">Comercial</label><input id="fCom" type="text" placeholder="Nombre"></div>
+      <div class="field"><label for="fVin">VIN</label><input id="fVin" type="text" placeholder="17 caracteres"></div>
+      <div class="field"><label for="fMat">Matrícula</label><input id="fMat" type="text" placeholder="0000 XXX"></div>
+      <div class="field"><label for="fKm">Kilómetros</label><input id="fKm" type="text" placeholder="km del cuadro"></div>
+    </div>
     <div class="acta-btns">
-      <button class="btn primary" id="btnGen">Generar acta</button>
-      <button class="btn" id="btnCopy">Copiar</button>
+      <button class="btn primary" id="btnPrint">Imprimir o guardar en PDF</button>
+      <button class="btn" id="btnGen">Ver el texto</button>
+      <button class="btn" id="btnCopy">Copiar texto</button>
+      <button class="btn" id="btnBb">Copiar para el foro</button>
       <button class="btn" id="btnReset">Empezar de cero</button>
     </div>
     <textarea id="actaOut" readonly></textarea>
   </div>
 
   <footer>
-    <p style="margin:0 0 10px">Los avisos marcados como <b>Foro</b> corresponden a incidencias publicadas por propietarios en clubomoda5.com; son casos particulares, no defectos garantizados en tu unidad. Sirven para saber dónde mirar. Algunos hilos exigen registro para ver los adjuntos.</p>
+    <p style="margin:0 0 10px"><b>¿Falta algo?</b> Esta lista sale de lo que los propietarios han ido contando en el foro, así que crece con lo que cuente cada uno. Si en tu entrega te encontraste algo que aquí no está, publícalo en clubomoda5.com o abre una ficha aquí abajo y se añade.</p>
+    <div class="flinks" style="margin-bottom:12px">
+      <a href="https://github.com/juanagan/checklist-omoda5/issues/new?template=falta-un-punto.yml" target="_blank" rel="noopener">Falta un punto</a>
+      <a href="https://github.com/juanagan/checklist-omoda5/issues/new?template=error-o-correccion.yml" target="_blank" rel="noopener">Hay un error</a>
+      <a href="https://github.com/juanagan/checklist-omoda5/issues" target="_blank" rel="noopener">Ver lo propuesto</a>
+    </div>
+    <p style="margin:0 0 12px">Los avisos marcados como <b>Foro</b> corresponden a incidencias publicadas por propietarios; son casos particulares, no defectos garantizados en tu unidad. Sirven para saber dónde mirar. Algunos hilos exigen registro para ver los adjuntos. Cada punto tiene un código estable, del tipo <b>02.06</b>, para poder citarlo en el foro sin ambigüedad.</p>
     <div class="flinks">
       <a href="https://www.clubomoda5.com/" target="_blank" rel="noopener">Club Foro Omoda 5</a>
-      <a href="https://www.clubomoda5.com/forums/general-shs-h.27/" target="_blank" rel="noopener">Subforo General SHS-H</a>
-      <a href="https://www.clubomoda5.com/whats-new/posts/" target="_blank" rel="noopener">Mensajes nuevos</a>
+      <a href="https://www.clubomoda5.com/forums/general-shs-h.27/" target="_blank" rel="noopener">General SHS-H</a>
+      <a href="https://www.clubomoda5.com/forums/general-ev.26/" target="_blank" rel="noopener">General EV</a>
+      <a href="https://www.clubomoda5.com/forums/general.8/" target="_blank" rel="noopener">General</a>
       <a href="https://www.clubomoda5.com/search/?type=post" target="_blank" rel="noopener">Buscar en el foro</a>
     </div>
+    <p class="offnote" id="offNote"></p>
   </footer>
 </div>
+<div id="printDoc"></div>
+<noscript><p style="max-width:760px;margin:24px auto;padding:0 16px;font-family:system-ui,sans-serif">Esta lista necesita JavaScript activado para funcionar. No usa servidores ni envía datos: todo se ejecuta en tu navegador.</p></noscript>
 
 <script>
 const DATA = [
@@ -332,7 +475,7 @@ const DATA = [
  {t:"Kilómetros del cuadro", d:"Anota la cifra exacta. Si pasa de un centenar, pregunta dónde ha estado el coche."},
  {t:"Factura contra pedido", d:"Importe, descuentos, promociones y extras coinciden con lo firmado en la reserva.", k:1},
  {t:"Regalos y extras por escrito", d:"Alfombrillas, bandeja, tintado, mantenimiento... si no está en papel, no existe.", f:"Hay un hilo entero sobre los regalos del concesionario, con expectativas muy dispares según el punto de venta."},
- {t:"Garantía activada a tu nombre", d:"7 años o 150.000 km de vehículo y 8 años de batería. Que te enseñen el alta en el sistema.", k:1},
+ {t:"Garantía activada a tu nombre", d:"7 años o 150.000 km de vehículo y, en híbrido y eléctrico, 8 años de batería. Que te enseñen el alta en el sistema.", k:1},
  {t:"Libro de mantenimiento sellado", d:"Con la fecha de entrega y los intervalos de revisión anotados."},
  {t:"Manual de usuario en español", d:"Dentro del coche. Con este modelo lo vas a necesitar más de lo que crees."},
  {t:"Etiqueta ambiental ECO", d:"Quién la solicita, cuándo la tienes y si va incluida."},
@@ -341,10 +484,10 @@ const DATA = [
  {t:"Contacto de posventa", d:"Nombre, teléfono y cómo se abre una incidencia en garantía."},
  {t:"Las dos llaves", d:"Que te den las dos y las pruebes las dos. Apertura, cierre, portón y arranque."}
 ]},
-{n:"Carrocería y exterior", note:"El Negro Ópalo es el peor color posible para esconder defectos y el mejor para detectarlos. Aprovéchalo: agáchate hasta ver el reflejo rasante en cada panel.", items:[
+{n:"Carrocería y exterior", note:"Si tu coche es oscuro, tienes ventaja: el negro y los azules profundos delatan cualquier defecto de pintura. Si es blanco, plata o gris claro, te va a costar más y necesitas mejor luz y más ángulos. En ambos casos, agáchate hasta ver el reflejo rasante en cada panel.", items:[
  {t:"Condiciones de revisión correctas", d:"Coche seco, a la luz del día. Primero a la sombra para ver el brillo, después al sol para ver las rayas.", k:1},
  {t:"Panel a panel en diagonal", d:"Capó, aletas, las cuatro puertas, laterales, portón y techo. Mira cada uno desde dos ángulos."},
- {t:"Microrayas y hologramas de lavado", d:"Círculos finos que solo se ven con luz directa. En negro aparecen a un metro de distancia.", f:"Hilo abierto por una marca de falta de brillo en la carrocería; también hay quien admite haberse hecho microarañazos en el primer lavado.", k:1},
+ {t:"Microrayas y hologramas de lavado", d:"Círculos finos que solo se ven con luz directa. En colores oscuros saltan a la vista a un metro; en blancos y plata hay que buscarlas con más paciencia y mejor luz.", f:"Hilo abierto por una marca de falta de brillo en la carrocería; también hay quien admite haberse hecho microarañazos en el primer lavado.", k:1},
  {t:"Abolladuras pequeñas", d:"Pasa la mano por aletas delanteras y puertas. Se sienten antes de verse.", f:"Caso publicado de un mini bollo en la aleta delantera izquierda descubierto ya en casa."},
  {t:"Saltones de pintura", d:"Morro, faldón delantero y bajos de puertas. Marcan el punto de partida frente a los que te hagas tú después."},
  {t:"Carcasas de los retrovisores", d:"Míralas por arriba, por abajo y por el filo. Es la pieza que más se roza al maniobrar los coches en el almacén.", f:"Un propietario del SHS Premium detectó el retrovisor rayado dos días después de la entrega. Se lo ofrecieron pulir, pero ya no podía probar que venía así.", k:1},
@@ -366,7 +509,7 @@ const DATA = [
  {t:"Vídeo y fotos del exterior completo", d:"Dando la vuelta entera, con el coche todavía dentro del concesionario. Es tu única prueba a partir de mañana.", k:1}
 ]},
 {n:"Ruedas, bajos y dotación", items:[
- {t:"Las cuatro llantas de 18 pulgadas", d:"Sin rozaduras de bordillo. Mira también la cara interna girando el volante a tope.", k:1},
+ {t:"Las cuatro llantas", d:"Sin rozaduras de bordillo. Mira también la cara interna girando el volante a tope. Y que la medida sea la que pone en el pedido.", k:1},
  {t:"Cuatro neumáticos iguales", d:"Misma marca, modelo y medida en los cuatro."},
  {t:"Fecha DOT de los neumáticos", d:"Los cuatro números similares y de menos de dos años respecto a hoy."},
  {t:"Presiones y TPMS", d:"Presiones a lo indicado en la pegatina de la puerta y sin avisos en el cuadro."},
@@ -407,7 +550,7 @@ const DATA = [
  {t:"CarPlay o Android Auto inalámbrico", d:"Empareja tu móvil. Prueba audio, mapa y micrófono con una llamada real.", k:1},
  {t:"Radio FM y DAB", d:"Sintoniza varias emisoras y déjalas sonar un rato. No te quedes en la presintonía de demostración.", f:"Hay un hilo sobre problemas de radio abierto hace pocas horas.", k:1},
  {t:"Comportamiento de la radio al maniobrar", d:"Comprueba si se silencia al meter marcha atrás o al actuar el start/stop, y si eso te va a molestar.", f:"Dos hilos independientes describen este comportamiento; según los foreros es de serie, no una avería, pero conviene saberlo antes."},
- {t:"Los ocho altavoces Sony", d:"Mueve balance y fader hasta aislar cada altavoz. Confirma que suenan los ocho.", k:1},
+ {t:"Todos los altavoces", d:"Mueve balance y fader hasta aislar cada uno. Los acabados con equipo Sony llevan ocho; los de acceso, seis. Confirma que suenan todos los que te corresponden.", k:1},
  {t:"Puertos y tomas", d:"USB delanteros y traseros, tomas de 12 V y Bluetooth."},
  {t:"Cámara de visión 540º", d:"Imagen nítida, sin desalineación en las costuras entre cámaras, y guías dinámicas que giran con el volante.", k:1},
  {t:"Sensores de aparcamiento", d:"Delanteros y traseros. Acerca la mano y comprueba que pitan y que el gráfico responde por zonas.", f:"Hilos sobre el radar y el sensor delantero con dudas de calibración."},
@@ -429,7 +572,16 @@ const DATA = [
  {t:"Limpiaparabrisas y lavaparabrisas", d:"Todas las velocidades, sensor de lluvia, limpia trasero y chorros delanteros y traseros bien orientados. Depósito lleno.", f:"Para levantar los limpias hay que parar el coche por el botón de arranque y, antes de tres segundos, girar la ruleta a la posición manual. No es evidente: que te lo enseñen."},
  {t:"Bocina", d:"Suena a la primera desde cualquier punto del aro."},
  {t:"Monitor de atención del conductor", d:"Comprueba que reacciona si apartas la vista unos segundos.", f:"Hilo abierto porque el DMS no funcionaba en una unidad."},
- {t:"Techo panorámico", d:"Apertura, inclinación, cierre y cortinilla eléctrica. Prueba el antipinzamiento con la mano."}
+ {t:"Techo panorámico", d:"Apertura, inclinación, cierre y cortinilla eléctrica. Prueba el antipinzamiento con la mano."},
+ {t:"Trampilla de carga", d:"Abre, cierra y encaja. Comprueba que se ilumina y localiza el desbloqueo manual de emergencia por si un día se queda el conector atrapado."},
+ {t:"Cables de carga incluidos", d:"Confirma exactamente cuáles entran: el modo 3 tipo 2 y, si te lo prometieron, el modo 2 de enchufe doméstico. Con su bolsa.", k:1},
+ {t:"Una carga de prueba en el concesionario", d:"Enchufa en su punto de recarga y comprueba que la sesión arranca y que el conector queda bloqueado y se libera.", k:1},
+ {t:"Programación de carga y preacondicionamiento", d:"Desde la pantalla y desde la app: límite de carga, horario y climatización previa."},
+ {t:"Sonido de aviso a peatones", d:"A baja velocidad tiene que emitir el aviso acústico. Es obligatorio y a veces se detecta mudo."},
+ {t:"Carga y autonomía en la entrega", d:"Anota el porcentaje de batería y la autonomía estimada que marca. Sirve de referencia para las primeras semanas."},
+ {t:"Niveles con el motor frío", d:"Aceite, refrigerante y líquido de frenos entre las marcas. Pide verlo, no que te lo cuenten."},
+ {t:"Arranque en frío", d:"Sin humo azul o blanco persistente por el escape y sin ruidos metálicos en los primeros segundos."},
+ {t:"Start/stop", d:"Corta y rearranca sin brusquedad ni vibración fuerte en el volante."}
 ]},
 {n:"Prueba en marcha", note:"Pide una vuelta de quince o veinte minutos antes de firmar, con tramo urbano, un badén y una incorporación rápida. Casi todas las quejas serias del subforo SHS-H se detectan conduciendo, no aparcado.", items:[
  {t:"Arranque y transición térmico-eléctrico", d:"Arranca en silencio, en eléctrico, y el motor de gasolina entra sin tirón ni ruido brusco."},
@@ -445,7 +597,10 @@ const DATA = [
  {t:"Control de crucero adaptativo", d:"Fija velocidad, ajusta distancia y comprueba que frena y retoma solo."},
  {t:"Ángulo muerto, tráfico cruzado y frenada de emergencia", d:"Que aparezcan los indicadores y que los avisos suenen."},
  {t:"Lector de señales y aviso de exceso de velocidad", d:"Comprueba que lee bien las señales y aprende a desactivar el pitido.", f:"Hilo dedicado a cómo se activa y desactiva ese asistente."},
- {t:"Cuadro limpio al terminar", d:"Ningún mensaje de error acumulado durante el trayecto.", k:1}
+ {t:"Cuadro limpio al terminar", d:"Ningún mensaje de error acumulado durante el trayecto.", k:1},
+ {t:"Cambio DCT de doble embrague", d:"Maniobras lentas, arrancadas en rampa y simulación de atasco. Los tirones y la indecisión a baja velocidad son el punto débil típico de este tipo de cambio: mejor descubrirlo ahora.", k:1},
+ {t:"Frenada regenerativa", d:"Prueba los distintos niveles y, si lo tiene, el modo de un solo pedal. La retención debe ser progresiva, sin escalones."},
+ {t:"Consumo y autonomía coherentes", d:"La estimación restante no debería dar saltos absurdos al cambiar de vía o al soltar el acelerador."}
 ]},
 {n:"Antes de firmar", items:[
  {t:"Vídeo continuo del coche entero", d:"Vuelta completa por fuera y recorrido por dentro, antes de firmar nada. Con fecha.", k:1},
@@ -706,12 +861,29 @@ const VIS={
 };
 
 const KEY='omoda5-entrega-v1';
-let state={fields:{},items:{}};
+let state={fields:{},items:{},motor:'all',flt:{}};
+
+/* ---------- Motorizaciones ---------- */
+const MNAME={all:"todas las motorizaciones",g:"gasolina",h:"híbrido SHS-H",e:"eléctrico EV"};
+const MLBL={g:"Gasolina",h:"Híbrido",e:"EV",gh:"Gasolina · Híbrido",eh:"Híbrido · EV"};
+const MOTORBY={
+ e:["Trampilla de carga","Cables de carga incluidos","Una carga de prueba en el concesionario","Programación de carga y preacondicionamiento","Sonido de aviso a peatones","Carga y autonomía en la entrega","Consumo y autonomía coherentes"],
+ gh:["Niveles con el motor frío","Arranque en frío","Start/stop"],
+ g:["Cambio DCT de doble embrague"],
+ eh:["Frenada regenerativa"],
+ h:["Arranque y transición térmico-eléctrico"]
+};
+const MOTOR={};
+DATA.forEach((sec,si)=>sec.items.forEach((it,ii)=>{
+  for(const m in MOTORBY){ if(MOTORBY[m].indexOf(it.t)>=0) MOTOR[si+'-'+ii]=m; }
+}));
+const SLBL={ok:"Conforme",watch:"A revisar",ko:"Defecto",na:"No aplica"};
 
 /* ---------- Render ---------- */
 const root=document.getElementById('sections');
 DATA.forEach((sec,si)=>{
-  const s=document.createElement('section');
+  const el=document.createElement('section');
+  el.id='sec'+si;
   const secNum=String(si+1).padStart(2,'0');
   let html=`<div class="sec-head">
       <span class="sec-num">${secNum}</span>
@@ -722,10 +894,11 @@ DATA.forEach((sec,si)=>{
   sec.items.forEach((it,ii)=>{
     const id=`${si}-${ii}`;
     const code=`${secNum}.${String(ii+1).padStart(2,'0')}`;
-    html+=`<div class="item" id="i${id}" data-sec="${si}">
-      <div class="code">${code}</div>
+    const mt=MOTOR[id];
+    html+=`<div class="item" id="i${id}">
+      <div class="code"><a class="code" href="#i${id}" title="Enlace a este punto">${code}</a></div>
       <div class="body">
-        <span class="t">${it.t}${it.k?'<span class="key">Clave</span>':''}</span>
+        <span class="t">${it.t}${it.k?'<span class="key">Clave</span>':''}${mt?`<span class="mtag">${MLBL[mt]}</span>`:''}</span>
         <p class="d">${it.d}</p>
         ${(it.f||LINKS[id])?`<div class="forum"><b>Foro</b>${it.f||''}${flinks(id)}</div>`:''}
         ${VIS[id]?`<button class="figbtn" data-fig="${id}" aria-expanded="false">${VIS[id].b}</button>
@@ -734,21 +907,25 @@ DATA.forEach((sec,si)=>{
           <button data-id="${id}" data-s="ok" aria-pressed="false">Conforme</button>
           <button data-id="${id}" data-s="watch" aria-pressed="false">A revisar</button>
           <button data-id="${id}" data-s="ko" aria-pressed="false">Defecto</button>
+          <button data-id="${id}" data-s="na" aria-pressed="false">No aplica</button>
         </div>
         <textarea class="note" id="n${id}" placeholder="Qué has visto exactamente. Sé concreto: esto es lo que acabará en el acta."></textarea>
       </div>
     </div>`;
   });
-  s.innerHTML=html;
-  root.appendChild(s);
+  el.innerHTML=html;
+  root.appendChild(el);
 });
+
+/* índice de secciones */
+const nav=document.getElementById('secnav');
+nav.innerHTML=DATA.map((sec,si)=>`<a href="#sec${si}" id="nv${si}">${sec.n} <b></b></a>`).join('');
 
 /* ---------- Interacción ---------- */
 root.addEventListener('click',e=>{
   const fb=e.target.closest('button[data-fig]');
   if(fb){
-    const id=fb.dataset.fig;
-    const box=document.getElementById('f'+id);
+    const id=fb.dataset.fig, box=document.getElementById('f'+id);
     const open=box.classList.toggle('show');
     fb.setAttribute('aria-expanded',String(open));
     fb.textContent=open?'Ocultar esquema':VIS[id].b;
@@ -756,12 +933,11 @@ root.addEventListener('click',e=>{
   }
   const b=e.target.closest('button[data-s]');
   if(!b)return;
-  const id=b.dataset.id, s=b.dataset.s;
-  const cur=state.items[id]&&state.items[id].s;
-  const next=(cur===s)?null:s;
+  const id=b.dataset.id, st=b.dataset.s;
+  const cur=(state.items[id]||{}).s;
   state.items[id]=state.items[id]||{};
-  state.items[id].s=next;
-  paint(id); tally(); save();
+  state.items[id].s=(cur===st)?null:st;
+  paint(id); tally(); applyFilters(); save();
 });
 root.addEventListener('input',e=>{
   if(!e.target.classList.contains('note'))return;
@@ -773,123 +949,208 @@ root.addEventListener('input',e=>{
 document.querySelectorAll('.fields input').forEach(inp=>{
   inp.addEventListener('input',()=>{state.fields[inp.id]=inp.value;save();});
 });
+document.getElementById('motorSel').addEventListener('click',e=>{
+  const b=e.target.closest('button[data-m]'); if(!b)return;
+  state.motor=b.dataset.m; syncControls(); tally(); applyFilters(); save();
+});
+document.getElementById('filterSel').addEventListener('click',e=>{
+  const b=e.target.closest('button[data-f]'); if(!b)return;
+  state.flt[b.dataset.f]=!state.flt[b.dataset.f];
+  syncControls(); applyFilters(); save();
+});
 
+function syncControls(){
+  document.querySelectorAll('#motorSel button').forEach(b=>
+    b.setAttribute('aria-pressed',String(b.dataset.m===state.motor)));
+  document.querySelectorAll('#filterSel button').forEach(b=>
+    b.setAttribute('aria-pressed',String(!!state.flt[b.dataset.f])));
+}
+function applies(id){
+  const m=MOTOR[id];
+  return state.motor==='all'||!m||m.indexOf(state.motor)>=0;
+}
 function paint(id){
   const row=document.getElementById('i'+id);
-  const st=(state.items[id]&&state.items[id].s)||null;
+  const st=(state.items[id]||{}).s||null;
   row.className='item'+(st?' st-'+st:'');
-  row.querySelectorAll('button[data-s]').forEach(b=>{
-    b.setAttribute('aria-pressed',String(b.dataset.s===st));
-  });
+  row.querySelectorAll('button[data-s]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.s===st)));
   const note=document.getElementById('n'+id);
   note.classList.toggle('show', st==='watch'||st==='ko');
   if(state.items[id]&&state.items[id].n!=null) note.value=state.items[id].n;
 }
-
-function tally(){
-  let o=0,w=0,k=0,total=0;
+function applyFilters(){
   DATA.forEach((sec,si)=>{
-    let done=0;
-    sec.items.forEach((_,ii)=>{
-      total++;
-      const st=(state.items[`${si}-${ii}`]||{}).s;
-      if(st)done++;
-      if(st==='ok')o++; else if(st==='watch')w++; else if(st==='ko')k++;
+    sec.items.forEach((it,ii)=>{
+      const id=`${si}-${ii}`;
+      const st=(state.items[id]||{}).s;
+      let show=applies(id);
+      if(show&&state.flt.key&&!it.k) show=false;
+      if(show&&state.flt.pend&&st) show=false;
+      const row=document.getElementById('i'+id);
+      row.classList.toggle('hide',!show);
+      row.classList.toggle('st-'+(st||'x'), !!st);
     });
-    document.getElementById('p'+si).textContent=`${done}/${sec.items.length}`;
   });
+}
+function tally(){
+  let o=0,w=0,k=0,na=0,total=0;
+  DATA.forEach((sec,si)=>{
+    let done=0,app=0;
+    sec.items.forEach((_,ii)=>{
+      const id=`${si}-${ii}`;
+      if(!applies(id))return;
+      app++; total++;
+      const st=(state.items[id]||{}).s;
+      if(st)done++;
+      if(st==='ok')o++;else if(st==='watch')w++;else if(st==='ko')k++;else if(st==='na')na++;
+    });
+    document.getElementById('p'+si).textContent=`${done}/${app}`;
+    const nv=document.getElementById('nv'+si);
+    nv.querySelector('b').textContent=`${done}/${app}`;
+    nv.classList.toggle('done',done===app&&app>0);
+  });
+  const pend=total-o-w-k-na;
   document.getElementById('cOk').textContent=o;
   document.getElementById('cWatch').textContent=w;
   document.getElementById('cKo').textContent=k;
-  document.getElementById('cPend').textContent=total-o-w-k;
-  document.getElementById('sOk').style.width=(o/total*100)+'%';
-  document.getElementById('sWatch').style.width=(w/total*100)+'%';
-  document.getElementById('sKo').style.width=(k/total*100)+'%';
+  document.getElementById('cPend').textContent=pend;
+  const base=Math.max(total-na,1);
+  document.getElementById('sOk').style.width=(o/base*100)+'%';
+  document.getElementById('sWatch').style.width=(w/base*100)+'%';
+  document.getElementById('sKo').style.width=(k/base*100)+'%';
 }
 
 /* ---------- Acta ---------- */
-document.getElementById('btnGen').addEventListener('click',()=>{
-  const f=state.fields;
-  const L=[];
+function esc(v){return String(v==null?'':v).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));}
+function actaData(){
+  const rows=[]; let o=0,w=0,k=0,na=0,p=0;
+  DATA.forEach((sec,si)=>{
+    const its=[];
+    sec.items.forEach((it,ii)=>{
+      const id=`${si}-${ii}`;
+      if(!applies(id))return;
+      const e=state.items[id]||{};
+      if(e.s==='ok')o++;else if(e.s==='watch')w++;else if(e.s==='ko')k++;else if(e.s==='na')na++;else p++;
+      its.push({code:`${String(si+1).padStart(2,'0')}.${String(ii+1).padStart(2,'0')}`,t:it.t,s:e.s||null,n:e.n||''});
+    });
+    if(its.length)rows.push({n:sec.n,its});
+  });
+  const inc=[];
+  rows.forEach(r=>r.its.forEach(i=>{if(i.s==='ko'||i.s==='watch')inc.push(i);}));
+  return {rows,inc,o,w,k,na,p};
+}
+function buildPrint(){
+  const f=state.fields, d=actaData();
+  let h=`<div class="pd"><h1>Acta de recepción del vehículo</h1>
+   <p class="pdsub">Omoda 5 · ${MNAME[state.motor]} · revisión previa a la firma · generada el ${new Date().toLocaleDateString('es-ES')}</p>
+   <table class="pdid"><tbody>
+    <tr><th>Fecha</th><td>${esc(f.fFecha)||'&nbsp;'}</td><th>Matrícula</th><td>${esc(f.fMat)||'&nbsp;'}</td></tr>
+    <tr><th>VIN</th><td>${esc(f.fVin)||'&nbsp;'}</td><th>Kilómetros</th><td>${esc(f.fKm)||'&nbsp;'}</td></tr>
+    <tr><th>Concesionario</th><td>${esc(f.fConce)||'&nbsp;'}</td><th>Comercial</th><td>${esc(f.fCom)||'&nbsp;'}</td></tr>
+   </tbody></table>
+   <p class="sum"><span>Conformes: ${d.o}</span><span>A revisar: ${d.w}</span><span>Defectos: ${d.k}</span><span>No aplica: ${d.na}</span><span>Sin comprobar: ${d.p}</span></p>`;
+  if(d.inc.length){
+    h+='<h2>Incidencias que deben constar en la entrega</h2><table class="lst"><tbody>';
+    d.inc.forEach(i=>{h+=`<tr><td class="c">${i.code}</td><td class="s${i.s==='ko'?' ko':''}">${SLBL[i.s]}</td><td>${esc(i.t)}${i.n?`<span class="nt">${esc(i.n)}</span>`:''}</td></tr>`;});
+    h+='</tbody></table><p class="sum">El comprador solicita que las incidencias anteriores queden recogidas en el documento de entrega, con fecha comprometida de reparación o aclaración, antes de dar por cerrada la conformidad del vehículo.</p>';
+  }else{
+    h+='<h2>Incidencias</h2><p class="sum">No se ha registrado ninguna incidencia en esta revisión.</p>';
+  }
+  h+='<h2>Revisión completa, punto por punto</h2><table class="lst"><tbody>';
+  d.rows.forEach(r=>{
+    h+=`<tr class="grp"><td colspan="3">${esc(r.n)}</td></tr>`;
+    r.its.forEach(i=>{h+=`<tr><td class="c">${i.code}</td><td class="s${i.s==='ko'?' ko':''}">${i.s?SLBL[i.s]:'sin comprobar'}</td><td>${esc(i.t)}${i.n?`<span class="nt">${esc(i.n)}</span>`:''}</td></tr>`;});
+  });
+  h+=`</tbody></table>
+   <div class="sign"><div>Firma del comprador</div><div>Firma y sello del concesionario</div></div>
+   <p class="foot">Generado con la lista de comprobación de la comunidad de clubomoda5.com. Documento de uso privado entre comprador y vendedor; no sustituye al documento oficial de entrega.</p></div>`;
+  document.getElementById('printDoc').innerHTML=h;
+}
+function actaText(){
+  const f=state.fields, d=actaData(), L=[];
   L.push('ACTA DE RECEPCIÓN DEL VEHÍCULO');
-  L.push('Omoda 5 SHS-H Premium · 1.5 TGDI 165 kW · Negro Ópalo');
+  L.push('Omoda 5 · '+MNAME[state.motor]);
   L.push('');
-  L.push('Fecha: '+(f.fFecha||'—'));
-  L.push('Concesionario: '+(f.fConce||'—'));
-  L.push('Comercial: '+(f.fCom||'—'));
-  L.push('VIN: '+(f.fVin||'—'));
-  L.push('Matrícula: '+(f.fMat||'—'));
-  L.push('Kilómetros en el momento de la entrega: '+(f.fKm||'—'));
+  L.push('Fecha: '+(f.fFecha||'—')+'   Matrícula: '+(f.fMat||'—'));
+  L.push('VIN: '+(f.fVin||'—')+'   Kilómetros: '+(f.fKm||'—'));
+  L.push('Concesionario: '+(f.fConce||'—')+'   Comercial: '+(f.fCom||'—'));
   L.push('');
-  const ko=[],w=[],pend=[];
-  DATA.forEach((sec,si)=>sec.items.forEach((it,ii)=>{
-    const e=state.items[`${si}-${ii}`]||{};
-    const code=`${String(si+1).padStart(2,'0')}.${String(ii+1).padStart(2,'0')}`;
-    const line=`[${code}] ${it.t}`+(e.n?`\n        → ${e.n}`:'');
-    if(e.s==='ko')ko.push(line); else if(e.s==='watch')w.push(line); else if(!e.s)pend.push(`[${code}] ${it.t}`);
-  }));
-  L.push('DEFECTOS DETECTADOS ('+ko.length+')');
-  L.push(ko.length?ko.join('\n'):'Ninguno.');
+  L.push(`Conformes ${d.o} · A revisar ${d.w} · Defectos ${d.k} · No aplica ${d.na} · Sin comprobar ${d.p}`);
   L.push('');
-  L.push('PUNTOS A REVISAR O ACLARAR ('+w.length+')');
-  L.push(w.length?w.join('\n'):'Ninguno.');
-  L.push('');
-  if(ko.length||w.length){
-    L.push('Solicito que los puntos anteriores queden recogidos en el documento de');
-    L.push('entrega, con fecha comprometida de reparación o aclaración, antes de');
-    L.push('dar por cerrada la conformidad del vehículo.');
+  L.push('INCIDENCIAS');
+  if(d.inc.length){
+    d.inc.forEach(i=>{L.push(`[${i.code}] ${SLBL[i.s].toUpperCase()} · ${i.t}`+(i.n?'\n        → '+i.n:''));});
     L.push('');
-  }
-  L.push('SIN COMPROBAR ('+pend.length+')');
+    L.push('Solicito que estos puntos queden recogidos en el documento de entrega,');
+    L.push('con fecha comprometida de reparación, antes de firmar la conformidad.');
+  }else L.push('Ninguna.');
+  L.push('');
+  L.push('SIN COMPROBAR');
+  const pend=[]; d.rows.forEach(r=>r.its.forEach(i=>{if(!i.s)pend.push(`[${i.code}] ${i.t}`);}));
   L.push(pend.length?pend.join('\n'):'Ninguno. Revisión completa.');
-  const out=document.getElementById('actaOut');
-  out.value=L.join('\n');
-  out.classList.add('show');
-  out.scrollIntoView({behavior:'smooth',block:'nearest'});
+  return L.join('\n');
+}
+function actaBB(){
+  const d=actaData(), url=location.origin+location.pathname;
+  let t=`[B]Revisión de entrega · Omoda 5 (${MNAME[state.motor]})[/B]\n`;
+  t+=`Conformes ${d.o} · A revisar ${d.w} · Defectos ${d.k} · Sin comprobar ${d.p}\n\n`;
+  if(d.inc.length){
+    t+='[B]Lo que me he encontrado:[/B]\n[LIST]\n';
+    d.inc.forEach(i=>{t+=`[*][B]${i.code}[/B] ${i.t} — ${i.s==='ko'?'defecto':'a revisar'}${i.n?': '+i.n:''}\n`;});
+    t+='[/LIST]\n';
+  }else t+='Sin incidencias, todo conforme.\n';
+  t+='\nLista de comprobación usada: '+url;
+  return t;
+}
+async function copy(txt,btn,label){
+  try{ await navigator.clipboard.writeText(txt); btn.textContent='Copiado'; }
+  catch(err){ const o=document.getElementById('actaOut'); o.value=txt; o.classList.add('show'); o.select(); btn.textContent='Selecciona y copia'; }
+  setTimeout(()=>{btn.textContent=label;},1800);
+}
+document.getElementById('btnPrint').addEventListener('click',()=>{buildPrint();window.print();});
+document.getElementById('btnGen').addEventListener('click',()=>{
+  const o=document.getElementById('actaOut');
+  o.value=actaText(); o.classList.add('show'); if(o.scrollIntoView)o.scrollIntoView({behavior:'smooth',block:'nearest'});
 });
-
-document.getElementById('btnCopy').addEventListener('click',async()=>{
-  const out=document.getElementById('actaOut');
-  if(!out.value){document.getElementById('btnGen').click();}
-  const btn=document.getElementById('btnCopy');
-  try{
-    await navigator.clipboard.writeText(out.value);
-    btn.textContent='Copiado';
-  }catch(err){
-    out.select(); btn.textContent='Selecciona y copia';
-  }
-  setTimeout(()=>{btn.textContent='Copiar';},1800);
-});
-
+document.getElementById('btnCopy').addEventListener('click',e=>copy(actaText(),e.target,'Copiar texto'));
+document.getElementById('btnBb').addEventListener('click',e=>copy(actaBB(),e.target,'Copiar para el foro'));
 document.getElementById('btnReset').addEventListener('click',()=>{
   if(!confirm('Se borran todas las marcas y notas. ¿Seguir?'))return;
-  state={fields:{},items:{}};
+  state={fields:{},items:{},motor:state.motor,flt:{}};
   document.querySelectorAll('.fields input').forEach(i=>i.value='');
   document.querySelectorAll('.note').forEach(n=>{n.value='';n.classList.remove('show');});
   DATA.forEach((sec,si)=>sec.items.forEach((_,ii)=>paint(`${si}-${ii}`)));
   document.getElementById('actaOut').classList.remove('show');
-  tally(); save();
+  syncControls(); tally(); applyFilters(); save();
 });
 
-/* ---------- Persistencia (localStorage: funciona en cualquier hosting) ---------- */
-function save(){
-  try{ localStorage.setItem(KEY, JSON.stringify(state)); }catch(e){}
-}
+/* ---------- Persistencia (localStorage) ---------- */
+function save(){ try{ localStorage.setItem(KEY, JSON.stringify(state)); }catch(e){} }
 function load(){
   try{
     const raw=localStorage.getItem(KEY);
     if(raw){
-      state=JSON.parse(raw);
-      state.fields=state.fields||{}; state.items=state.items||{};
-      Object.keys(state.fields).forEach(k=>{
-        const el=document.getElementById(k); if(el)el.value=state.fields[k];
-      });
+      const o=JSON.parse(raw);
+      state.items=o.items||{}; state.fields=o.fields||{};
+      state.motor=o.motor||'all'; state.flt=o.flt||{};
+      Object.keys(state.fields).forEach(k=>{const el=document.getElementById(k); if(el)el.value=state.fields[k];});
     }
   }catch(e){}
   DATA.forEach((sec,si)=>sec.items.forEach((_,ii)=>paint(`${si}-${ii}`)));
-  tally();
+  syncControls(); tally(); applyFilters();
+  if(location.hash){ try{const t=document.querySelector(location.hash); if(t&&t.scrollIntoView)setTimeout(()=>t.scrollIntoView({block:'center'}),120);}catch(e){} }
 }
 load();
+
+/* ---------- Uso sin conexión ---------- */
+if('serviceWorker' in navigator){
+  window.addEventListener('load',()=>{
+    navigator.serviceWorker.register('./sw.js').then(()=>{
+      const n=document.getElementById('offNote');
+      if(n)n.textContent='Guardado en este dispositivo. Funciona sin cobertura.';
+    }).catch(()=>{});
+  });
+}
 </script>
 </body>
 </html>
