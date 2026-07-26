@@ -16,6 +16,7 @@
 <meta name="theme-color" content="#15191D">
 <link rel="icon" href="assets/icon-192.png">
 <link rel="apple-touch-icon" href="assets/icon-180.png">
+<meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="Checklist O5">
 <style>
@@ -284,6 +285,9 @@
   .cap-pic{display:none}
   .hero.haspic .cap-art{display:none}
   .hero.haspic .cap-pic{display:block}
+  .unoff{display:flex;align-items:flex-start;gap:12px;margin:14px 0 0;padding:12px 0 0;border-top:1px solid var(--line-soft)}
+  .unoff img{width:78px;height:auto;flex:none;opacity:.5;margin-top:2px}
+  .unoff span{font-size:12.5px;color:var(--ink-faint);line-height:1.5}
   .offnote{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--ok);margin:12px 0 0}
 
   /* ---------- Configuración y filtros ---------- */
@@ -374,7 +378,7 @@
         <p class="eyebrow">Revisión previa a la firma</p>
         <h1>Checklist de entrega<br>del Omoda 5</h1>
         <p class="spec">
-          <b>129 puntos</b> para revisar el coche antes de firmar<br>
+          <b>131 puntos</b> para revisar el coche antes de firmar<br>
           Gasolina · Híbrido SHS-H · Eléctrico EV, en cualquier acabado<br>
           A partir de casos reales publicados por propietarios en el foro
         </p>
@@ -417,11 +421,11 @@
 
   <div class="panel">
     <h2>Antes de ir</h2>
-    <p class="lead">La lección que más se repite en el foro: los defectos que no detectas ese día se convierten en tu palabra contra la suya. Un propietario vio el retrovisor rayado a los dos días y ya no pudo demostrar que venía así.</p>
+    <p class="lead">La lección que más se repite en el foro: los defectos que no detectas ese día se convierten en tu palabra contra la suya. Un propietario vio el retrovisor rayado a los dos días y ya no pudo demostrar que venía así. Esto vale sobre todo para golpes, rayas y piezas que falten: las averías mecánicas y electrónicas las cubre la garantía legal aunque salgan meses después.</p>
     <ul>
       <li><b>Reserva 90 minutos</b> y ve de día. Los fluorescentes de un taller no enseñan nada; la luz natural sí.</li>
       <li><b>El coche tiene que estar seco.</b> Varios foreros cuentan que los vehículos se almacenan a la intemperie y se lavan justo antes de entregar; el agua y el abrillantador tapan microrayas y hologramas. Si te lo sacan mojado, espera a que seque.</li>
-      <li><b>No firmes nada antes de terminar la revisión.</b> Ni la conformidad, ni la matriculación, ni la financiación.</li>
+      <li><b>Lo único que firmas ese día es la conformidad de la entrega.</b> El pedido, la financiación y la matriculación ya están hechos semanas antes, y el coche ya está a tu nombre. No vas a echar eso atrás en el mostrador. Lo que sí está en tu mano es <i>cómo</i> firmas el acta de entrega.</li>
       <li><b>Lleva:</b> linterna, una microfibra limpia, tu móvil con batería (para el cargador inalámbrico y CarPlay) y un acompañante para probar las luces desde fuera.</li>
       <li><b>Lleva el pedido impreso</b> con el equipamiento y los extras pactados, para contrastarlos uno a uno.</li>
     </ul>
@@ -482,6 +486,11 @@
       <a href="https://www.clubomoda5.com/forums/general.8/" target="_blank" rel="noopener">General</a>
       <a href="https://www.clubomoda5.com/search/?type=post" target="_blank" rel="noopener">Buscar en el foro</a>
     </div>
+    <p class="unoff">
+      <img src="assets/omoda-wordmark.svg" alt="Omoda" onerror="this.remove()">
+      <span>Sitio no oficial, hecho por propietarios. Sin relación con Omoda, Chery ni con ningún concesionario. Las marcas citadas pertenecen a sus titulares y se usan solo para identificar el vehículo del que trata esta lista.</span>
+    </p>
+    <p style="margin:12px 0 0">Esto no es asesoramiento jurídico. Para un caso concreto, la OMIC de tu ayuntamiento y las juntas arbitrales de consumo son gratuitas.</p>
     <p class="offnote" id="offNote"></p>
   </footer>
 </div>
@@ -496,7 +505,7 @@ const DATA = [
  {t:"Kilómetros del cuadro", d:"Anota la cifra exacta. Si pasa de un centenar, pregunta dónde ha estado el coche."},
  {t:"Factura contra pedido", d:"Importe, descuentos, promociones y extras coinciden con lo firmado en la reserva.", k:1},
  {t:"Regalos y extras por escrito", d:"Alfombrillas, bandeja, tintado, mantenimiento... si no está en papel, no existe.", f:"Hay un hilo entero sobre los regalos del concesionario, con expectativas muy dispares según el punto de venta."},
- {t:"Garantía activada a tu nombre", d:"7 años o 150.000 km de vehículo y, en híbrido y eléctrico, 8 años de batería. Que te enseñen el alta en el sistema.", k:1},
+ {t:"Garantía activada a tu nombre", d:"7 años o 150.000 km de vehículo y, en híbrido y eléctrico, 8 años de batería. Que te enseñen el alta en el sistema. Esa es la garantía comercial de la marca; por debajo tienes además tres años de garantía legal frente al concesionario que te vende, y es irrenunciable.", k:1},
  {t:"Libro de mantenimiento sellado", d:"Con la fecha de entrega y los intervalos de revisión anotados."},
  {t:"Manual de usuario en español", d:"Dentro del coche. Con este modelo lo vas a necesitar más de lo que crees."},
  {t:"Etiqueta ambiental ECO", d:"Quién la solicita, cuándo la tienes y si va incluida."},
@@ -623,15 +632,17 @@ const DATA = [
  {t:"Frenada regenerativa", d:"Prueba los distintos niveles y, si lo tiene, el modo de un solo pedal. La retención debe ser progresiva, sin escalones."},
  {t:"Consumo y autonomía coherentes", d:"La estimación restante no debería dar saltos absurdos al cambiar de vía o al soltar el acelerador."}
 ]},
-{n:"Antes de firmar", items:[
+{n:"Antes de firmar", note:"Conviene saber cómo funciona esto de verdad, porque circula mucho el consejo de «no firmes nada» y a estas alturas ya no aplica. Cuando llegas a recoger el coche, el pedido está firmado desde hace meses, la financiación también, y el vehículo ya está matriculado a tu nombre. El único documento que queda en tu mano es el de conformidad de la entrega. No se trata de negarte a firmarlo: se trata de firmarlo haciendo constar lo que has encontrado.", items:[
  {t:"Vídeo continuo del coche entero", d:"Vuelta completa por fuera y recorrido por dentro, antes de firmar nada. Con fecha.", k:1},
  {t:"Todo defecto, por escrito en el acta de entrega", d:"Cada punto que hayas marcado, con fecha comprometida de reparación. No aceptes un compromiso verbal.", f:"El caso del retrovisor rayado del foro se resolvió a base de insistir. Otro forero lo resume: has pagado por una cosa perfecta, no con desperfectos.", k:1},
  {t:"Nada de eso te lo pulimos luego", d:"Si no está escrito y con plazo, no existe. Pulir tiene además un límite: si no sale, tienen que pintar o cambiar la pieza."},
- {t:"Valora aplazar la entrega", d:"Si el defecto es de pintura, chapa o una pieza rayada, tienes más fuerza antes de firmar que después."},
+ {t:"Valora aplazar la entrega", d:"Si el defecto es de pintura, chapa o una pieza rayada, puedes pedir que la entrega se retrase hasta que esté resuelto. Aplazar la recepción no es anular la compra ni dejar de pagar: es no dar por buena la entrega todavía. Tienes más fuerza aquí que en cualquier reclamación posterior."},
  {t:"Copia firmada y sellada de todo", d:"En papel o enviada a tu propio email el mismo día."},
  {t:"Reserva descontada en la factura", d:"Que la entrega a cuenta figure restada del importe final."},
  {t:"Kilómetros, fecha y hora anotados", d:"En el acta y en tu móvil."},
- {t:"Acta enviada al comercial hoy mismo", d:"Genera el acta con el botón de abajo y mándasela por email antes de que acabe el día. Deja rastro.", k:1}
+ {t:"Acta enviada al comercial hoy mismo", d:"Genera el acta con el botón de abajo y mándasela por email antes de que acabe el día. Deja rastro.", k:1},
+ {t:"Firma con reservas, nunca en blanco", d:"Si queda algo pendiente, escribe a mano en el documento de entrega antes de firmarlo: «Recibo el vehículo haciendo constar las siguientes reservas», y las enumeras. Si no cabe, imprime el acta, adjúntala y menciónala en el documento. Firmar con reservas no es negarse a firmar: es dejar constancia de en qué estado te lo entregan.", k:1},
+ {t:"Ten presente la garantía legal", d:"Aunque se te escape algo, un coche nuevo comprado a un profesional tiene tres años de garantía legal frente al vendedor, y durante los dos primeros se presume que el defecto venía de origen salvo que el concesionario demuestre lo contrario. Esa red cubre bien lo mecánico y lo electrónico. Lo que no cubre son las rayas y los golpes, que es justo lo que hay que cazar hoy."}
 ]}
 ];
 
