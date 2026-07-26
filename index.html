@@ -276,7 +276,7 @@
   .hero{margin:0;padding:0;min-width:0}
   .hero img{display:none;width:100%;height:auto}
   .hero.haspic img{display:block}
-  .hero.haspic .heroart{display:none}
+  .hero.haspic .heroart,.hero.haspic figcaption{display:none}
   .heroart{width:100%;height:auto;display:block}
   .heroart .cl{fill:none;stroke:#5E7C90;stroke-width:3;stroke-linejoin:round;stroke-linecap:round}
   .heroart .cg{fill:none;stroke:#41596A;stroke-width:2.4;stroke-linejoin:round}
@@ -376,7 +376,7 @@
   <div class="mh-inner">
     <div class="brandrow">
       <span class="mark" aria-hidden="true"><svg viewBox="0 0 32 32"><rect width="32" height="32" rx="7" fill="#7AA8C4"/><path d="M9 16.6l4.6 4.6L23 11" fill="none" stroke="#15191D" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-      <span class="brandtxt">Herramienta de la comunidad de<br><b>clubomoda5.com</b> · versión 2.3</span>
+      <span class="brandtxt">Lista de comprobación para el día<br>de la entrega<b> · versión 2.4</b></span>
       <span class="oem"><img src="assets/omoda-wordmark.svg" alt="Omoda" onerror="this.closest('.oem').remove()"><em>Sitio no oficial</em></span>
     </div>
     <div class="mh-grid">
@@ -384,10 +384,11 @@
         <p class="eyebrow">Revisión previa a la firma</p>
         <h1>Checklist de entrega<br>del Omoda 5</h1>
         <p class="spec">
-          <b>131 puntos</b> para revisar el coche antes de firmar<br>
-          Gasolina · Híbrido SHS-H · Eléctrico EV, en cualquier acabado<br>
-          A partir de casos reales publicados por propietarios en el foro
-        </p>
+      <span><b>131</b> puntos</span>
+      <span>Gasolina</span>
+      <span>Híbrido SHS-H</span>
+      <span>Eléctrico EV</span>
+    </p>
       </div>
       <figure class="hero" id="hero">
         <img src="assets/omoda5.png" alt="Omoda 5 visto de tres cuartos" onerror="this.remove()" onload="document.getElementById('hero').classList.add('haspic')">
