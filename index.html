@@ -1,0 +1,895 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Acta de recepción · Omoda 5 SHS-H Premium</title>
+<meta name="description" content="Checklist de revisión previa a la firma para la entrega de un Omoda 5 SHS-H Premium, con los puntos reportados por propietarios en el foro.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#15191D;
+    --ink-soft:#525E68;
+    --ink-faint:#8894A0;
+    --paper:#E7EAED;
+    --surface:#FFFFFF;
+    --line:#CBD3D9;
+    --line-soft:#E2E7EB;
+    --accent:#16394F;
+    --ok:#0F6E52;
+    --watch:#96690A;
+    --ko:#AF2A25;
+    --ok-bg:#E4F1EC;
+    --watch-bg:#F7EFDC;
+    --ko-bg:#F8E5E4;
+    --radius:3px;
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+    font-size:16px;
+    line-height:1.5;
+  }
+  .wrap{max-width:800px;margin:0 auto;padding:0 14px 120px}
+
+  /* ---------- Cabecera ---------- */
+  .masthead{
+    background:var(--ink);
+    color:#F2F5F7;
+    margin:0 -14px 0;
+    padding:26px 20px 22px;
+  }
+  .masthead .eyebrow{
+    font-family:"IBM Plex Mono",monospace;
+    font-size:11px;letter-spacing:.16em;text-transform:uppercase;
+    color:#8FA3B0;margin:0 0 10px;
+  }
+  .masthead h1{
+    font-family:"Space Grotesk",sans-serif;
+    font-weight:700;font-size:clamp(26px,6.5vw,38px);
+    line-height:1.06;letter-spacing:-.02em;margin:0 0 12px;
+  }
+  .masthead .spec{
+    font-family:"IBM Plex Mono",monospace;
+    font-size:12.5px;color:#A8BAC6;line-height:1.75;
+  }
+  .masthead .spec b{color:#E7EEF2;font-weight:500}
+
+  /* ---------- Barra de estado ---------- */
+  .tally{
+    position:sticky;top:0;z-index:20;
+    background:var(--surface);
+    border-bottom:1px solid var(--line);
+    margin:0 -14px 20px;padding:10px 16px 11px;
+    box-shadow:0 1px 0 rgba(0,0,0,.04);
+  }
+  .tally-row{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap}
+  .tally-count{
+    font-family:"IBM Plex Mono",monospace;
+    font-size:12px;font-weight:500;letter-spacing:.02em;
+    display:flex;align-items:center;gap:6px;
+  }
+  .dot{width:8px;height:8px;border-radius:50%;display:inline-block;flex:none}
+  .dot.ok{background:var(--ok)} .dot.watch{background:var(--watch)} .dot.ko{background:var(--ko)}
+  .tally-count.pend{color:var(--ink-faint);margin-left:auto}
+  .strip{display:flex;height:5px;margin-top:9px;background:var(--line-soft);border-radius:99px;overflow:hidden}
+  .strip span{height:100%;transition:width .25s ease}
+  .strip .s-ok{background:var(--ok)} .strip .s-watch{background:var(--watch)} .strip .s-ko{background:var(--ko)}
+
+  /* ---------- Bloques ---------- */
+  .panel{
+    background:var(--surface);border:1px solid var(--line);
+    border-radius:var(--radius);padding:18px 18px 4px;margin:0 0 20px;
+  }
+  .panel h2{
+    font-family:"Space Grotesk",sans-serif;font-size:16px;font-weight:700;
+    margin:0 0 4px;letter-spacing:-.01em;
+  }
+  .panel .lead{color:var(--ink-soft);font-size:14.5px;margin:0 0 12px}
+  .panel ul{margin:0 0 14px;padding-left:18px;color:var(--ink-soft);font-size:14.5px}
+  .panel li{margin-bottom:5px}
+  .panel li b{color:var(--ink);font-weight:600}
+
+  /* ---------- Datos de la entrega ---------- */
+  .fields{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:11px;margin-bottom:16px}
+  .field label{
+    display:block;font-family:"IBM Plex Mono",monospace;font-size:10.5px;
+    letter-spacing:.12em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:4px;
+  }
+  .field input{
+    width:100%;padding:8px 10px;border:1px solid var(--line);border-radius:var(--radius);
+    font-family:"IBM Plex Mono",monospace;font-size:14px;color:var(--ink);background:#FBFCFC;
+  }
+  .field input:focus{outline:2px solid var(--accent);outline-offset:-1px;background:#fff}
+
+  /* ---------- Secciones ---------- */
+  section{margin:0 0 26px}
+  .sec-head{
+    display:flex;align-items:baseline;gap:11px;
+    padding:0 2px 9px;border-bottom:2px solid var(--ink);margin-bottom:0;
+  }
+  .sec-num{
+    font-family:"IBM Plex Mono",monospace;font-size:12px;font-weight:600;
+    color:var(--accent);flex:none;
+  }
+  .sec-head h2{
+    font-family:"Space Grotesk",sans-serif;font-size:19px;font-weight:700;
+    margin:0;letter-spacing:-.015em;flex:1;
+  }
+  .sec-prog{font-family:"IBM Plex Mono",monospace;font-size:11.5px;color:var(--ink-faint);flex:none}
+  .sec-note{
+    font-size:14px;color:var(--ink-soft);background:var(--surface);
+    border:1px solid var(--line);border-top:none;padding:11px 14px;margin:0;
+  }
+
+  /* ---------- Ítems ---------- */
+  .item{
+    background:var(--surface);border:1px solid var(--line);border-top:none;
+    padding:13px 14px;display:grid;grid-template-columns:44px 1fr;gap:0 10px;
+  }
+  .item:first-of-type{border-top:1px solid var(--line)}
+  .item.st-ok{background:var(--ok-bg)}
+  .item.st-watch{background:var(--watch-bg)}
+  .item.st-ko{background:var(--ko-bg)}
+  .code{
+    font-family:"IBM Plex Mono",monospace;font-size:11.5px;color:var(--ink-faint);
+    padding-top:2px;
+  }
+  .body .t{font-weight:600;font-size:15.5px;line-height:1.35;margin:0 0 3px;display:block}
+  .body .d{color:var(--ink-soft);font-size:14.5px;margin:0}
+  .key{
+    display:inline-block;vertical-align:2px;margin-left:7px;
+    font-family:"IBM Plex Mono",monospace;font-size:9.5px;font-weight:600;
+    letter-spacing:.1em;text-transform:uppercase;color:#fff;background:var(--accent);
+    padding:2px 5px;border-radius:2px;
+  }
+  .forum{
+    margin:8px 0 0;padding:7px 0 7px 11px;border-left:3px solid var(--line);
+    font-size:13.5px;color:var(--ink-soft);
+  }
+  .forum b{
+    font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.1em;
+    text-transform:uppercase;color:var(--accent);display:block;margin-bottom:2px;font-weight:600;
+  }
+  .flinks{display:flex;flex-wrap:wrap;gap:5px;margin-top:8px}
+  .flinks a{
+    font-family:"IBM Plex Mono",monospace;font-size:11px;line-height:1.35;
+    color:var(--accent);text-decoration:none;background:#fff;
+    border:1px solid var(--line);border-radius:99px;padding:4px 10px;
+    transition:all .12s ease;
+  }
+  .flinks a:hover{border-color:var(--accent);background:#EFF4F7}
+  .flinks a:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+  .flinks a::after{content:" ↗";opacity:.45}
+  .figbtn{
+    font-family:"IBM Plex Mono",monospace;font-size:11px;font-weight:500;
+    letter-spacing:.05em;text-transform:uppercase;margin-top:9px;
+    padding:6px 12px;border:1px dashed var(--accent);background:#fff;color:var(--accent);
+    border-radius:99px;cursor:pointer;transition:all .12s ease;
+  }
+  .figbtn:hover{background:#EFF4F7}
+  .figbtn:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+  .figwrap{display:none;margin-top:10px;border:1px solid var(--line);background:#FBFCFD;padding:14px 12px 12px;border-radius:var(--radius)}
+  .figwrap.show{display:block}
+  .figwrap svg{width:100%;height:auto;display:block;max-width:400px;margin:0 auto}
+  .figcap{font-size:13.5px;color:var(--ink-soft);margin:11px auto 0;max-width:400px;line-height:1.5}
+  .dl{fill:none;stroke:#3A4750;stroke-width:1.6;stroke-linejoin:round;stroke-linecap:round}
+  .dt{fill:#E4E9ED;stroke:#3A4750;stroke-width:1.6}
+  .hi{fill:none;stroke:#16394F;stroke-width:3;stroke-linecap:round}
+  .hif{fill:#16394F}
+  .hib{fill:#C9DDEA;stroke:#16394F;stroke-width:1.8}
+  .kol{fill:none;stroke:#AF2A25;stroke-width:2}
+  .okl{fill:none;stroke:#0F6E52;stroke-width:2}
+  .lb{font-family:"IBM Plex Mono",monospace;font-size:10px;fill:#16394F}
+  .lbm{font-family:"IBM Plex Mono",monospace;font-size:9.5px;fill:#7C8892}
+  .lbk{font-family:"IBM Plex Mono",monospace;font-size:10px;fill:#AF2A25}
+  .lbo{font-family:"IBM Plex Mono",monospace;font-size:10px;fill:#0F6E52}
+  .ld{stroke:#16394F;stroke-width:1;fill:none;stroke-dasharray:2.5 2.5}
+  .states{display:flex;gap:6px;margin-top:10px;flex-wrap:wrap}
+  .states button{
+    font-family:"IBM Plex Mono",monospace;font-size:11px;font-weight:500;
+    letter-spacing:.05em;text-transform:uppercase;
+    padding:6px 11px;border:1px solid var(--line);background:#fff;color:var(--ink-soft);
+    border-radius:99px;cursor:pointer;transition:all .12s ease;
+  }
+  .states button:hover{border-color:var(--ink-faint)}
+  .states button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+  .states button[aria-pressed="true"][data-s="ok"]{background:var(--ok);border-color:var(--ok);color:#fff}
+  .states button[aria-pressed="true"][data-s="watch"]{background:var(--watch);border-color:var(--watch);color:#fff}
+  .states button[aria-pressed="true"][data-s="ko"]{background:var(--ko);border-color:var(--ko);color:#fff}
+  .note{
+    display:none;width:100%;margin-top:9px;padding:8px 10px;
+    border:1px solid var(--line);border-radius:var(--radius);
+    font-family:"IBM Plex Sans",sans-serif;font-size:14px;color:var(--ink);
+    background:#fff;resize:vertical;min-height:52px;
+  }
+  .note.show{display:block}
+  .note:focus{outline:2px solid var(--accent);outline-offset:-1px}
+
+  /* ---------- Acta ---------- */
+  .acta{background:var(--ink);color:#EDF1F4;border-radius:var(--radius);padding:20px 18px;margin-top:8px}
+  .acta h2{font-family:"Space Grotesk",sans-serif;font-size:18px;margin:0 0 6px;color:#fff}
+  .acta p{font-size:14.5px;color:#A8BAC6;margin:0 0 14px}
+  .acta-btns{display:flex;gap:9px;flex-wrap:wrap}
+  .btn{
+    font-family:"IBM Plex Mono",monospace;font-size:12px;font-weight:500;
+    letter-spacing:.06em;text-transform:uppercase;
+    padding:11px 16px;border-radius:var(--radius);cursor:pointer;border:1px solid #4A5B67;
+    background:transparent;color:#DCE5EA;transition:all .12s ease;
+  }
+  .btn:hover{background:#243038}
+  .btn.primary{background:#fff;color:var(--ink);border-color:#fff}
+  .btn.primary:hover{background:#DDE5EA}
+  .btn:focus-visible{outline:2px solid #7FB2CE;outline-offset:2px}
+  #actaOut{
+    display:none;width:100%;margin-top:14px;min-height:230px;padding:12px;
+    font-family:"IBM Plex Mono",monospace;font-size:12.5px;line-height:1.6;
+    background:#0D1114;color:#D6E2E9;border:1px solid #33424C;border-radius:var(--radius);
+  }
+  #actaOut.show{display:block}
+
+  footer{
+    margin-top:24px;font-size:13px;color:var(--ink-faint);line-height:1.6;
+    border-top:1px solid var(--line);padding-top:14px;
+  }
+
+  @media (max-width:520px){
+    .item{grid-template-columns:1fr;gap:0}
+    .code{padding-bottom:4px}
+  }
+  @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+  @media print{
+    body{background:#fff}
+    .tally,.acta,.states,.figbtn{display:none}
+    .figwrap{display:block!important;break-inside:avoid}
+    .item,.panel,.sec-note{border-color:#999}
+    .note{display:block!important;border-color:#999}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="masthead">
+    <p class="eyebrow">Revisión previa a la firma</p>
+    <h1>Acta de recepción<br>del vehículo</h1>
+    <p class="spec">
+      <b>OMODA 5 SHS-H Premium</b> · 1.5 TGDI · 165 kW<br>
+      Color <b>Negro Ópalo</b><br>
+      Puntos extraídos de casos reales publicados en clubomoda5.com
+    </p>
+  </header>
+
+  <div class="tally">
+    <div class="tally-row">
+      <span class="tally-count"><i class="dot ok"></i><span id="cOk">0</span> conforme</span>
+      <span class="tally-count"><i class="dot watch"></i><span id="cWatch">0</span> a revisar</span>
+      <span class="tally-count"><i class="dot ko"></i><span id="cKo">0</span> defecto</span>
+      <span class="tally-count pend"><span id="cPend">0</span> sin comprobar</span>
+    </div>
+    <div class="strip">
+      <span class="s-ok" id="sOk" style="width:0"></span>
+      <span class="s-watch" id="sWatch" style="width:0"></span>
+      <span class="s-ko" id="sKo" style="width:0"></span>
+    </div>
+  </div>
+
+  <div class="panel">
+    <h2>Antes de ir</h2>
+    <p class="lead">La lección que más se repite en el foro: los defectos que no detectas ese día se convierten en tu palabra contra la suya. Un propietario vio el retrovisor rayado a los dos días y ya no pudo demostrar que venía así.</p>
+    <ul>
+      <li><b>Reserva 90 minutos</b> y ve de día. Un Negro Ópalo bajo fluorescentes de taller no enseña nada.</li>
+      <li><b>El coche tiene que estar seco.</b> Varios foreros cuentan que los vehículos se almacenan a la intemperie y se lavan justo antes de entregar; el agua y el abrillantador tapan microrayas y hologramas. Si te lo sacan mojado, espera a que seque.</li>
+      <li><b>No firmes nada antes de terminar la revisión.</b> Ni la conformidad, ni la matriculación, ni la financiación.</li>
+      <li><b>Lleva:</b> linterna, una microfibra limpia, tu móvil con batería (para el cargador inalámbrico y CarPlay), y un acompañante para probar luces desde fuera.</li>
+      <li><b>Lleva el pedido impreso</b> con el equipamiento y los extras pactados, para contrastarlos uno a uno.</li>
+    </ul>
+    <div class="fields">
+      <div class="field"><label for="fFecha">Fecha</label><input id="fFecha" type="date"></div>
+      <div class="field"><label for="fConce">Concesionario</label><input id="fConce" type="text" placeholder="Nombre"></div>
+      <div class="field"><label for="fVin">VIN</label><input id="fVin" type="text" placeholder="17 caracteres"></div>
+      <div class="field"><label for="fMat">Matrícula</label><input id="fMat" type="text" placeholder="0000 XXX"></div>
+      <div class="field"><label for="fKm">Kilómetros</label><input id="fKm" type="text" placeholder="km del cuadro"></div>
+      <div class="field"><label for="fCom">Comercial</label><input id="fCom" type="text" placeholder="Nombre"></div>
+    </div>
+  </div>
+
+  <main id="sections"></main>
+
+  <div class="acta">
+    <h2>Generar el acta</h2>
+    <p>Reúne todo lo que has marcado como <b>a revisar</b> o <b>defecto</b>, con tus notas. Cópialo, hazlo constar por escrito en la entrega y envíaselo al comercial por email el mismo día.</p>
+    <div class="acta-btns">
+      <button class="btn primary" id="btnGen">Generar acta</button>
+      <button class="btn" id="btnCopy">Copiar</button>
+      <button class="btn" id="btnReset">Empezar de cero</button>
+    </div>
+    <textarea id="actaOut" readonly></textarea>
+  </div>
+
+  <footer>
+    <p style="margin:0 0 10px">Los avisos marcados como <b>Foro</b> corresponden a incidencias publicadas por propietarios en clubomoda5.com; son casos particulares, no defectos garantizados en tu unidad. Sirven para saber dónde mirar. Algunos hilos exigen registro para ver los adjuntos.</p>
+    <div class="flinks">
+      <a href="https://www.clubomoda5.com/" target="_blank" rel="noopener">Club Foro Omoda 5</a>
+      <a href="https://www.clubomoda5.com/forums/general-shs-h.27/" target="_blank" rel="noopener">Subforo General SHS-H</a>
+      <a href="https://www.clubomoda5.com/whats-new/posts/" target="_blank" rel="noopener">Mensajes nuevos</a>
+      <a href="https://www.clubomoda5.com/search/?type=post" target="_blank" rel="noopener">Buscar en el foro</a>
+    </div>
+  </footer>
+</div>
+
+<script>
+const DATA = [
+{n:"Documentación y administrativo", items:[
+ {t:"Ficha técnica y permiso de circulación", d:"Datos correctos, a tu nombre, y fecha de matriculación reciente.", k:1},
+ {t:"El VIN coincide en todas partes", d:"Parabrisas, placa del pilar de la puerta del conductor, ficha técnica y contrato. Los cuatro iguales.", f:"Un forero se alarmó al encontrar una placa con el VIN grapada bajo el asiento del copiloto; es normal de fábrica.", k:1},
+ {t:"Kilómetros del cuadro", d:"Anota la cifra exacta. Si pasa de un centenar, pregunta dónde ha estado el coche."},
+ {t:"Factura contra pedido", d:"Importe, descuentos, promociones y extras coinciden con lo firmado en la reserva.", k:1},
+ {t:"Regalos y extras por escrito", d:"Alfombrillas, bandeja, tintado, mantenimiento... si no está en papel, no existe.", f:"Hay un hilo entero sobre los regalos del concesionario, con expectativas muy dispares según el punto de venta."},
+ {t:"Garantía activada a tu nombre", d:"7 años o 150.000 km de vehículo y 8 años de batería. Que te enseñen el alta en el sistema.", k:1},
+ {t:"Libro de mantenimiento sellado", d:"Con la fecha de entrega y los intervalos de revisión anotados."},
+ {t:"Manual de usuario en español", d:"Dentro del coche. Con este modelo lo vas a necesitar más de lo que crees."},
+ {t:"Etiqueta ambiental ECO", d:"Quién la solicita, cuándo la tienes y si va incluida."},
+ {t:"Financiación revisada línea a línea", d:"TAE, cuadro de amortización, comisiones y seguros vinculados.", f:"Hilo largo sobre el seguro de vida incluido en la financiación de Santander Consumer: varios no supieron que lo llevaban hasta después."},
+ {t:"Seguro del coche activo desde hoy", d:"Confirmado por tu aseguradora antes de salir con él del concesionario.", k:1},
+ {t:"Contacto de posventa", d:"Nombre, teléfono y cómo se abre una incidencia en garantía."},
+ {t:"Las dos llaves", d:"Que te den las dos y las pruebes las dos. Apertura, cierre, portón y arranque."}
+]},
+{n:"Carrocería y exterior", note:"El Negro Ópalo es el peor color posible para esconder defectos y el mejor para detectarlos. Aprovéchalo: agáchate hasta ver el reflejo rasante en cada panel.", items:[
+ {t:"Condiciones de revisión correctas", d:"Coche seco, a la luz del día. Primero a la sombra para ver el brillo, después al sol para ver las rayas.", k:1},
+ {t:"Panel a panel en diagonal", d:"Capó, aletas, las cuatro puertas, laterales, portón y techo. Mira cada uno desde dos ángulos."},
+ {t:"Microrayas y hologramas de lavado", d:"Círculos finos que solo se ven con luz directa. En negro aparecen a un metro de distancia.", f:"Hilo abierto por una marca de falta de brillo en la carrocería; también hay quien admite haberse hecho microarañazos en el primer lavado.", k:1},
+ {t:"Abolladuras pequeñas", d:"Pasa la mano por aletas delanteras y puertas. Se sienten antes de verse.", f:"Caso publicado de un mini bollo en la aleta delantera izquierda descubierto ya en casa."},
+ {t:"Saltones de pintura", d:"Morro, faldón delantero y bajos de puertas. Marcan el punto de partida frente a los que te hagas tú después."},
+ {t:"Carcasas de los retrovisores", d:"Míralas por arriba, por abajo y por el filo. Es la pieza que más se roza al maniobrar los coches en el almacén.", f:"Un propietario del SHS Premium detectó el retrovisor rayado dos días después de la entrega. Se lo ofrecieron pulir, pero ya no podía probar que venía así.", k:1},
+ {t:"Letras cromadas OMODA, delante y detrás", d:"Si se ven sucias, mates o casi oxidadas, no te alarmes: suele ser la parafina protectora del transporte marítimo.", f:"Justo eso le pasó a dos foreros. A uno el comercial se lo resolvió en el momento con un producto específico y quedaron impecables. Pídelo allí mismo, antes de firmar.", k:1},
+ {t:"Restos de parafina en el resto del coche", d:"Molduras, gomas de puerta, pasos de rueda y cerraduras."},
+ {t:"Holguras simétricas", d:"Entre capó y aletas, entre puertas, y todo el contorno del portón. Deben ser iguales de un lado al otro.", k:1},
+ {t:"Faros delanteros sin humedad", d:"Ni condensación interior ni agua en la junta entre el faro y la calandra.", f:"Hilo de esta misma semana: agua acumulada justo en la unión del faro superior con la calandra tras el primer lavado.", k:1},
+ {t:"Pilotos traseros", d:"Sin humedad y con todos los segmentos LED encendiendo."},
+ {t:"Parabrisas y lunas", d:"Sin impactos ni rayas. Míralos a contraluz y desde dentro."},
+ {t:"Cristales de privacidad", d:"Tono uniforme, sin burbujas ni bordes despegados."},
+ {t:"Techo panorámico por fuera", d:"Sin rayas ni marcas. Ábrelo y ciérralo completo, con la cortinilla."},
+ {t:"Barras de techo", d:"Fijas, alineadas y sin holgura al empujarlas."},
+ {t:"Antena y molduras", d:"Bien asentadas, sin juego al tocarlas."},
+ {t:"Escobillas del limpiaparabrisas", d:"Sin cortes en el labio de goma. Barren sin dejar franjas ni chirriar."},
+ {t:"Puertas", d:"Cierran a la primera, sin holgura vertical. Juntas de goma completas y bien encajadas."},
+ {t:"Portón trasero manual", d:"Abre y cierra sin forzar, también con el motor apagado.", f:"Hilo abierto por dureza excesiva al accionar el portón trasero."},
+ {t:"Tapa del depósito", d:"Abre, cierra y encaja bien. Comprueba también el tapón interior.", f:"Hilo específico sobre el tapón del depósito en el SHS."},
+ {t:"Espejos exteriores", d:"Plegado eléctrico, ajuste en los dos ejes y desempañado.", f:"Hilo sobre el plegado automático: conviene que te expliquen cómo se configura."},
+ {t:"Vídeo y fotos del exterior completo", d:"Dando la vuelta entera, con el coche todavía dentro del concesionario. Es tu única prueba a partir de mañana.", k:1}
+]},
+{n:"Ruedas, bajos y dotación", items:[
+ {t:"Las cuatro llantas de 18 pulgadas", d:"Sin rozaduras de bordillo. Mira también la cara interna girando el volante a tope.", k:1},
+ {t:"Cuatro neumáticos iguales", d:"Misma marca, modelo y medida en los cuatro."},
+ {t:"Fecha DOT de los neumáticos", d:"Los cuatro números similares y de menos de dos años respecto a hoy."},
+ {t:"Presiones y TPMS", d:"Presiones a lo indicado en la pegatina de la puerta y sin avisos en el cuadro."},
+ {t:"Tapones de válvula", d:"Los cuatro puestos."},
+ {t:"Tornillos antirrobo", d:"Si los lleva, que te entreguen la llave especial. Guárdala en el coche."},
+ {t:"Rueda de repuesto o kit antipinchazos", d:"Confirma exactamente qué trae y ábrelo para verlo.", f:"Un comprador se encontró con que su unidad no traía ninguna rueda, ni de repuesto ni galleta. Compruébalo antes de salir.", k:1},
+ {t:"Gato, llave de ruedas y anilla de remolque", d:"En su alojamiento y completos."},
+ {t:"Chaleco y baliza V16 conectada", d:"Obligatoria desde 2026. Pregunta si va incluida o la tienes que comprar tú.", k:1}
+]},
+{n:"Interior y acabados", items:[
+ {t:"Costuras de la tapicería", d:"Rectas y regulares en asientos, laterales, reposabrazos y paneles de puerta. Busca hilos sueltos y puntadas saltadas.", k:1},
+ {t:"Cuero sintético sin marcas", d:"Sin manchas, arrugas anómalas ni huellas grasientas del transporte."},
+ {t:"Asiento del conductor eléctrico", d:"Todos los movimientos hasta el tope y de vuelta, sin ruidos, saltos ni tirones.", f:"Hilo largo sobre el asiento del conductor, con quejas de recorrido y de posición de conducción."},
+ {t:"Calefacción y ventilación de los asientos", d:"Los dos delanteros, en todos sus niveles. La ventilación tiene que notarse, no solo encenderse el icono.", k:1},
+ {t:"Volante calefactable", d:"Que caliente de verdad en la corona, no solo el testigo."},
+ {t:"Volante centrado", d:"Con las ruedas rectas, el logo tiene que quedar horizontal.", f:"Hilo con quince respuestas sobre volantes entregados ligeramente torcidos.", k:1},
+ {t:"Las dos pantallas de 12,3 pulgadas", d:"Apagadas: rayas, marcas de dedos incrustadas, motas bajo el cristal. Encendidas: píxeles muertos, halos y zonas más claras.", k:1},
+ {t:"Respuesta táctil", d:"Prueba las cuatro esquinas y el centro de cada pantalla. Sin zonas muertas ni desplazamiento del punto de contacto."},
+ {t:"Consola central", d:"Sin marcas, arañazos ni piezas mal encajadas.", f:"Hilo abierto esta misma semana por un desperfecto en la consola central de una unidad nueva.", k:1},
+ {t:"Molduras piano black", d:"Sin rayas. Es el acabado que peor envejece y el que peor se ve en un interior oscuro."},
+ {t:"Crujidos y holguras", d:"Presiona con la palma salpicadero, paneles de puerta, consola y pilares.", f:"Hilo titulado grillos y ruidos en el material, con crujidos en el interior a los pocos meses."},
+ {t:"Protector adhesivo de la base del parabrisas", d:"Bien pegado en todo su recorrido, sin burbujas ni esquinas levantadas.", f:"Varios propietarios cuentan que se les ha ido despegando con el tiempo."},
+ {t:"Pegatina de aviso de airbag", d:"En el parasol del copiloto. Parece una tontería, pero es señalización obligatoria.", f:"Un forero recibió su coche sin ella."},
+ {t:"Tapas de los anclajes ISOFIX", d:"Las dos presentes y encajadas.", f:"Hilo abierto por una tapa embellecedora de ISOFIX que faltaba en la entrega."},
+ {t:"Alfombrillas", d:"Delanteras y traseras, incluidas y con sus fijaciones puestas."},
+ {t:"Iluminación ambiental multicolor", d:"Recorre toda la gama de colores y comprueba que ninguna tira falla o cambia de tono.", f:"Hilo con dudas sobre cómo se configura; que te lo enseñen en la entrega."},
+ {t:"Luces interiores", d:"Cortesía, lectura, guantera y maletero."},
+ {t:"Cargador inalámbrico de 50 W", d:"Con tu propio móvil. Tiene que cargar de forma estable, sin cortarse ni recalentar.", f:"Dos hilos muy largos: uno sobre el ruido del aire de refrigeración del cargador y otro sobre unidades que se conectan y desconectan solas.", k:1},
+ {t:"Tapa del cargador inalámbrico", d:"Encajada y sin holgura.", f:"Hilo específico sobre esta tapa."},
+ {t:"Maletero por dentro", d:"Moqueta, laterales, bandeja y suelo sin cortes, manchas ni roces."},
+ {t:"Toma de 12 V del maletero", d:"Funcionando. Es equipamiento del acabado Premium."},
+ {t:"Guantera, reposabrazos y huecos", d:"Abren, cierran y quedan enrasados."},
+ {t:"Parasoles y retrovisor interior", d:"Espejo, tapa y luz de cortesía. Retrovisor firme, sin vibración al empujarlo."},
+ {t:"Los cinco cinturones", d:"Salen del todo y se retraen solos sin quedarse a medias."}
+]},
+{n:"Electrónica, multimedia y confort", note:"Esta es la sección donde el foro acumula más incidencias. Hazla con el coche encendido y sin prisa: la mitad de los problemas reportados se ven en los primeros cinco minutos.", items:[
+ {t:"Cuadro limpio tras arrancar", d:"Ni un testigo ámbar ni un mensaje de aviso después de que termine el autochequeo.", f:"Los dos hilos más largos del subforo de electricidad son un aviso de averías con cerca de cien respuestas y un fallo de mantenimiento genérico.", k:1},
+ {t:"CarPlay o Android Auto inalámbrico", d:"Empareja tu móvil. Prueba audio, mapa y micrófono con una llamada real.", k:1},
+ {t:"Radio FM y DAB", d:"Sintoniza varias emisoras y déjalas sonar un rato. No te quedes en la presintonía de demostración.", f:"Hay un hilo sobre problemas de radio abierto hace pocas horas.", k:1},
+ {t:"Comportamiento de la radio al maniobrar", d:"Comprueba si se silencia al meter marcha atrás o al actuar el start/stop, y si eso te va a molestar.", f:"Dos hilos independientes describen este comportamiento; según los foreros es de serie, no una avería, pero conviene saberlo antes."},
+ {t:"Los ocho altavoces Sony", d:"Mueve balance y fader hasta aislar cada altavoz. Confirma que suenan los ocho.", k:1},
+ {t:"Puertos y tomas", d:"USB delanteros y traseros, tomas de 12 V y Bluetooth."},
+ {t:"Cámara de visión 540º", d:"Imagen nítida, sin desalineación en las costuras entre cámaras, y guías dinámicas que giran con el volante.", k:1},
+ {t:"Sensores de aparcamiento", d:"Delanteros y traseros. Acerca la mano y comprueba que pitan y que el gráfico responde por zonas.", f:"Hilos sobre el radar y el sensor delantero con dudas de calibración."},
+ {t:"Versión de software del sistema", d:"Anótala y pregunta si hay una actualización OTA pendiente de instalar.", f:"Hilo sobre una actualización reciente con cambios de comportamiento notables."},
+ {t:"App de Omoda vinculada", d:"Cuenta creada y VIN asociado antes de irte. Prueba cierre remoto, localización y climatización.", k:1},
+ {t:"Conectividad SIM del coche", d:"Activa, y confirma cuántos años de servicio están incluidos.", f:"Hilo sobre la tarjeta SIM y la cobertura de los servicios conectados."},
+ {t:"Asistente de voz", d:"Dale una orden real, del tipo subir la temperatura o poner la radio.", f:"Hilo abierto por un propietario que no conseguía que respondiera."},
+ {t:"Cuadro digital", d:"Cambia entre todas las vistas. Sin parpadeos ni reinicios."},
+ {t:"Climatizador bizona", d:"Frío y calor por separado en los dos lados, todas las salidas, recirculación y desempañadores delantero y trasero.", f:"Hilos muy largos sobre el climatizador y la calefacción, con dudas de funcionamiento y de reparto de aire.", k:1},
+ {t:"Portón eléctrico", d:"Apertura y cierre desde el botón del portón, desde la llave y desde el mando interior. Ajusta la altura máxima de apertura.", k:1},
+ {t:"Apertura del maletero por detección de presencia", d:"Ojo con esto: la ficha oficial del acabado Premium indica portón con apertura y cierre eléctrico, pero no menciona apertura manos libres por sensor. Pide que te la demuestren allí mismo. Si la das por hecha, exige que conste en el pedido antes de firmar.", k:1},
+ {t:"Acceso sin llave", d:"Las cuatro puertas y el portón, con la llave en el bolsillo y a distintas distancias.", k:1},
+ {t:"Arranque por botón", d:"Con la llave dentro. Y comprueba qué avisa si la llave no está."},
+ {t:"La segunda llave, completa", d:"Apertura, cierre, portón y arranque. No te fíes de que esté nueva.", f:"Hilo sobre la duración de la pila de la llave, con casos tempranos."},
+ {t:"Alarma", d:"Ciérralo, espera unos segundos y comprueba que salta al forzar una puerta.", f:"Dos hilos sobre la alarma y sobre mensajes de alarma inesperados."},
+ {t:"Los cuatro elevalunas", d:"Subida y bajada, función de un solo toque y antipinzamiento."},
+ {t:"Todas las luces exteriores, desde fuera", d:"Con alguien accionando: cruce, carretera, largas automáticas, antiniebla, intermitentes, emergencia, marcha atrás, freno y tercera luz.", f:"El hilo más largo del subforo de electricidad, con más de ciento cincuenta respuestas, va sobre los intermitentes traseros del SHS. Mírate cómo se comportan antes de firmar, no después.", k:1},
+ {t:"Luces de puerta y bienvenida", d:"Proyección al abrir, luces de aviso a peatones y secuencia al cerrar el coche.", f:"Hilos sobre las luces de las puertas y sobre el comportamiento de las luces al cerrar el vehículo."},
+ {t:"Limpiaparabrisas y lavaparabrisas", d:"Todas las velocidades, sensor de lluvia, limpia trasero y chorros delanteros y traseros bien orientados. Depósito lleno.", f:"Para levantar los limpias hay que parar el coche por el botón de arranque y, antes de tres segundos, girar la ruleta a la posición manual. No es evidente: que te lo enseñen."},
+ {t:"Bocina", d:"Suena a la primera desde cualquier punto del aro."},
+ {t:"Monitor de atención del conductor", d:"Comprueba que reacciona si apartas la vista unos segundos.", f:"Hilo abierto porque el DMS no funcionaba en una unidad."},
+ {t:"Techo panorámico", d:"Apertura, inclinación, cierre y cortinilla eléctrica. Prueba el antipinzamiento con la mano."}
+]},
+{n:"Prueba en marcha", note:"Pide una vuelta de quince o veinte minutos antes de firmar, con tramo urbano, un badén y una incorporación rápida. Casi todas las quejas serias del subforo SHS-H se detectan conduciendo, no aparcado.", items:[
+ {t:"Arranque y transición térmico-eléctrico", d:"Arranca en silencio, en eléctrico, y el motor de gasolina entra sin tirón ni ruido brusco."},
+ {t:"Aceleración a fondo", d:"Desde parado y también en una incorporación a 60-80 km/h. Debe empujar de forma continua, sin quedarse plano a media aceleración.", f:"Hilo activo con veinticinco respuestas titulado que el SHS acelera sin fuerza. Es el punto que más conviene comprobar en tu unidad concreta.", k:1},
+ {t:"Marcha atrás y maniobras lentas", d:"Mejor en rampa. Sin tirones ni salidas bruscas al soltar el freno.", f:"Hilo con dieciséis respuestas sobre brusquedad al circular marcha atrás.", k:1},
+ {t:"Ruidos del tren motriz", d:"Con la radio apagada, escucha al acelerar y al levantar el pie.", f:"Dos hilos abiertos preguntando si ciertos ruidos del HEV son normales."},
+ {t:"Badenes y adoquín", d:"Escucha crujidos procedentes del parabrisas o del salpicadero.", f:"Hilo sobre un crujido del cristal delantero al pasar irregularidades."},
+ {t:"Vibración de las pantallas", d:"Sobre firme irregular, comprueba que no zumban ni resuenan.", f:"Hilo con diecisiete respuestas sobre vibraciones y ruido de las pantallas."},
+ {t:"Frenada", d:"Una progresiva y una fuerte en zona segura. Sin vibración en pedal ni volante, sin ruidos metálicos.", k:1},
+ {t:"Freno de estacionamiento eléctrico y AutoHold", d:"Activan y liberan con suavidad, sin golpe seco."},
+ {t:"Dirección y alineación", d:"El coche va recto sin corregir y el volante se queda centrado al soltarlo.", k:1},
+ {t:"Mantenimiento de carril y centrado", d:"Se activan y funcionan sin dar aviso de fallo del sistema.", f:"Hilo con casi cien respuestas sobre el aviso de fallo del mantenimiento de carril. Es la incidencia electrónica más repetida del foro.", k:1},
+ {t:"Control de crucero adaptativo", d:"Fija velocidad, ajusta distancia y comprueba que frena y retoma solo."},
+ {t:"Ángulo muerto, tráfico cruzado y frenada de emergencia", d:"Que aparezcan los indicadores y que los avisos suenen."},
+ {t:"Lector de señales y aviso de exceso de velocidad", d:"Comprueba que lee bien las señales y aprende a desactivar el pitido.", f:"Hilo dedicado a cómo se activa y desactiva ese asistente."},
+ {t:"Cuadro limpio al terminar", d:"Ningún mensaje de error acumulado durante el trayecto.", k:1}
+]},
+{n:"Antes de firmar", items:[
+ {t:"Vídeo continuo del coche entero", d:"Vuelta completa por fuera y recorrido por dentro, antes de firmar nada. Con fecha.", k:1},
+ {t:"Todo defecto, por escrito en el acta de entrega", d:"Cada punto que hayas marcado, con fecha comprometida de reparación. No aceptes un compromiso verbal.", f:"El caso del retrovisor rayado del foro se resolvió a base de insistir. Otro forero lo resume: has pagado por una cosa perfecta, no con desperfectos.", k:1},
+ {t:"Nada de eso te lo pulimos luego", d:"Si no está escrito y con plazo, no existe. Pulir tiene además un límite: si no sale, tienen que pintar o cambiar la pieza."},
+ {t:"Valora aplazar la entrega", d:"Si el defecto es de pintura, chapa o una pieza rayada, tienes más fuerza antes de firmar que después."},
+ {t:"Copia firmada y sellada de todo", d:"En papel o enviada a tu propio email el mismo día."},
+ {t:"Reserva descontada en la factura", d:"Que la entrega a cuenta figure restada del importe final."},
+ {t:"Kilómetros, fecha y hora anotados", d:"En el acta y en tu móvil."},
+ {t:"Acta enviada al comercial hoy mismo", d:"Genera el acta con el botón de abajo y mándasela por email antes de que acabe el día. Deja rastro.", k:1}
+]}
+];
+
+/* Hilos del foro por punto de la lista. Clave: "sección-ítem" (índices desde 0). */
+const FBASE='https://www.clubomoda5.com/threads/';
+const LINKS={
+"0-0":[["Documentación del vehículo","documentacion-del-vehiculo.794/"]],
+"0-1":[["VIN con grapas bajo el asiento del copiloto","vin-con-grapas-bajo-asiento-de-copiloto-esto-que-es.2286/"]],
+"0-3":[["Comprobante de la compra","comprobante-de-la-compra.2138/"]],
+"0-4":[["Regalos del concesionario para tu Omoda 5","regalos-del-concesionario-para-tu-omoda-5.8/"]],
+"0-9":[["Seguro de vida en financiación Santander Consumer","seguro-de-vida-en-financiacion-santander-consumer.1960/"]],
+"1-0":[["Entrega con retrovisor rascado y otros detalles","entrega-con-retrovisor-rascado-otros-detalles.2070/"]],
+"1-2":[["Marca de falta de brillo en la carrocería","marca-de-falta-de-brillo-en-la-carroceria.2294/"],["Primer lavado del coche","primer-lavado-del-coche.2314/"]],
+"1-3":[["Mini bollito en la aleta delantera izquierda","mini-bollito-en-la-aleta-delantera-izquierda.1776/"]],
+"1-4":[["Agua dentro del faro y otras cuestiones","agua-dentro-del-faro-y-otras-cuestiones.2333/"]],
+"1-5":[["Entrega con retrovisor rascado y otros detalles","entrega-con-retrovisor-rascado-otros-detalles.2070/"],["Precio del retrovisor exterior y falta de despiece","precio-retrovisor-exterior-y-falta-de-despiece.2238/"]],
+"1-6":[["Respuesta en el hilo: era parafina y se la quitaron allí mismo","entrega-con-retrovisor-rascado-otros-detalles.2070/post-31506"]],
+"1-9":[["Agua dentro del faro y otras cuestiones","agua-dentro-del-faro-y-otras-cuestiones.2333/"]],
+"1-18":[["Dureza en el portón trasero","dureza-en-porton-trasero.2288/"]],
+"1-19":[["Tapón del depósito","tapon-del-deposito.2295/"]],
+"1-20":[["Plegado de espejos retrovisores","plegado-espejos-retrovisores.972/"]],
+"2-5":[["Tornillos antirrobo","tornillos-antirrobo.825/"],["Tornillos antirrobo para las ruedas","tornillos-antirrobo-para-las-ruedas.631/"]],
+"2-6":[["No trae ninguna rueda","no-trae-ninguna-rueda.1643/"]],
+"3-2":[["Asiento del conductor","asiento-conductor.890/"]],
+"3-4":[["Sobre el volante del Omoda 5","sobre-el-volante-del-omoda-5.2312/"]],
+"3-5":[["¿Volante torcido?","volante-torcido.1625/"]],
+"3-8":[["Desperfecto en la consola central","desperfecto-en-la-consola-central.2341/"]],
+"3-10":[["Grillos y ruidos en el material","grillos-ruidos-en-el-material.2202/"]],
+"3-11":[["El protector adhesivo de la luna delantera se despega","protector-adhesivo-luna-delantera-se-despega.1895/"]],
+"3-12":[["Pegatina de airbag en el parasol del copiloto","pegatina-airbag-en-parasol-copiloto.2129/"]],
+"3-13":[["Tapadera embellecedora del anclaje ISOFIX","tapadera-embellecedora-anclaje-isofix.2301/"]],
+"3-15":[["Duda sobre la iluminación ambiental","duda-iluminacion-ambiental.2272/"]],
+"3-16":[["Luces interiores","luces-interior.786/"]],
+"3-17":[["Aire en el cargador inalámbrico","aire-en-el-cargador-inalambrico.47/"],["Se conecta y se desconecta solo","cargador-inhalambrico-se-conecta-y-se-desconecta-solo.2229/"],["Carga inalámbrica","carga-inalambrica.72/"]],
+"3-18":[["Tapa del cargador inalámbrico","tapa-cargador-inalambrico.1657/"]],
+"4-0":[["Aviso de averías","aviso-de-averias.371/"],["Fallo de mantenimiento","fallo-mantenimiento.2211/"],["¿Nuevo error?","nuevo-error.2262/"]],
+"4-2":[["Problemas con la radio","problemas-con-la-radio.2346/"]],
+"4-3":[["Corte de radio con el start/stop","corte-de-radio-con-el-start-stop.2147/"],["Se silencia la radio con la marcha atrás","se-silencia-la-radio-con-la-marcha-atras.2285/"]],
+"4-7":[["Radar delantero","radar-delantero.102/"],["Sensor delantero","sensor-delantero.2083/"]],
+"4-8":[["Nueva actualización","nueva-actualizacion.2093/"]],
+"4-10":[["Tarjeta SIM","tarjeta-sim.381/"]],
+"4-11":[["Asistente de voz","asistente-de-voz.693/"]],
+"4-13":[["Climatizador","climatizador.704/"],["Calefacción","calefaccion.729/"],["Dudas sobre el aire acondicionado","dudas-aire-acondicionado.1940/"]],
+"4-15":[["Ficha técnica oficial del Omoda 5 SHS","https://www.omodajaecoo.es/modelos/omoda-5/hibrido-ficha-tecnica"],["Dudas generales del SHS-H","dudas-generales.2131/"]],
+"4-18":[["Pila de la llave","pila-de-la-llave.2132/"]],
+"4-19":[["Alarma","alarma.302/"],["Mensaje de alarma","mensaje-alarma.2216/"]],
+"4-21":[["Intermitentes traseros del SHS","intermitentes-traseros-shs.1832/"]],
+"4-22":[["Luces de las puertas de aviso a peatones","luces-de-las-puertas-de-aviso-de-peaton-o-coche.2018/"],["Luces al cerrar el vehículo","luces-al-cerrar-el-vehiculo.963/"]],
+"4-23":[["Cómo levantar los limpias: respuesta con foto","agua-dentro-del-faro-y-otras-cuestiones.2333/post-34601"]],
+"4-25":[["No funciona el DMS","no-funciona-el-dms.2145/"]],
+"5-1":[["El Omoda 5 SHS acelera sin fuerza","omoda-5-shs-acelera-sin-fuerza.2221/"]],
+"5-2":[["Brusquedad en marcha atrás","brusquedad-marcha-atras.2292/"]],
+"5-3":[["Ruidos en el Omoda 5 HEV, ¿normales?","ruidos-en-omoda-5-hev-normales.2054/"],["Dudas de ruidos","dudas-de-ruidos.2254/"]],
+"5-4":[["Crujido del cristal delantero","crujido-cristal-delantero.2217/"]],
+"5-5":[["Sonido y vibraciones de las pantallas","sonido-vibraciones-pantallas.1116/"]],
+"5-8":[["¿Volante torcido?","volante-torcido.1625/"]],
+"5-9":[["Aviso de fallo del mantenimiento de carril","aviso-fallo-mantenimiento-de-carril.1998/"]],
+"5-10":[["Sistemas de seguridad del SHS-H","sistemas-de-seguridad-shs-h.2142/"]],
+"5-12":[["Activación del asistente de aviso de supervelocidad","activacion-asistente-aviso-supervelocidad.2324/"]],
+"6-1":[["Entrega con retrovisor rascado y otros detalles","entrega-con-retrovisor-rascado-otros-detalles.2070/"]],
+"6-3":[["Respuesta en el hilo: quéjate hasta que te lo cambien","entrega-con-retrovisor-rascado-otros-detalles.2070/post-31499"]]
+};
+function flinks(id){
+  const L=LINKS[id];
+  if(!L)return '';
+  return '<div class="flinks">'+L.map(x=>{
+    const u=/^https?:/.test(x[1])?x[1]:FBASE+x[1];
+    return `<a href="${u}" target="_blank" rel="noopener">${x[0]}</a>`;
+  }).join('')+'</div>';
+}
+
+/* Esquemas para los puntos que no se reconocen a simple vista. */
+const VIS={
+"0-1":{b:"Ver los cuatro sitios",cap:"El VIN aparece en cuatro sitios y los cuatro tienen que decir lo mismo. Si uno no coincide, para la entrega ahí mismo.",svg:`
+<svg viewBox="0 0 360 280" role="img" aria-label="Los cuatro lugares donde aparece el numero VIN">
+ <text class="lbm" x="180" y="14" text-anchor="middle">Vista cenital · morro arriba</text>
+ <rect class="dt" x="132" y="26" width="96" height="150" rx="28"/>
+ <path class="dl" d="M146 70h68M144 112h72"/>
+ <rect class="dl" x="121" y="54" width="11" height="22" rx="3"/>
+ <rect class="dl" x="228" y="54" width="11" height="22" rx="3"/>
+ <rect class="dl" x="121" y="126" width="11" height="22" rx="3"/>
+ <rect class="dl" x="228" y="126" width="11" height="22" rx="3"/>
+ <circle class="hib" cx="152" cy="62" r="9"/><text class="lb" x="152" y="66" text-anchor="middle">1</text>
+ <circle class="hib" cx="132" cy="100" r="9"/><text class="lb" x="132" y="104" text-anchor="middle">2</text>
+ <circle class="hib" cx="204" cy="132" r="9"/><text class="lb" x="204" y="136" text-anchor="middle">3</text>
+ <rect class="dl" x="270" y="106" width="48" height="44" rx="3"/>
+ <path class="dl" d="M280 120h28M280 130h28M280 140h17"/>
+ <circle class="hib" cx="294" cy="96" r="9"/><text class="lb" x="294" y="100" text-anchor="middle">4</text>
+ <path class="dl" d="M14 194h332"/>
+ <text class="lb" x="14" y="216">1 · Grabado en el parabrisas, lado izquierdo</text>
+ <text class="lb" x="14" y="236">2 · Placa en el pilar de la puerta del conductor</text>
+ <text class="lb" x="14" y="256">3 · Placa bajo el asiento del copiloto</text>
+ <text class="lb" x="14" y="276">4 · Ficha técnica y permiso de circulación</text>
+</svg>`},
+
+"1-2":{b:"Ver cómo se miran",cap:"Las microrayas solo aparecen con la luz casi paralela al panel. De frente no se ven: agáchate hasta que el reflejo del cielo o de un foco te dé en el ojo y muévete despacio a lo largo de la chapa.",svg:`
+<svg viewBox="0 0 360 200" role="img" aria-label="Angulo correcto para detectar microrayas en la pintura">
+ <circle class="hif" cx="52" cy="34" r="11"/>
+ <path class="hi" d="M52 12v-6M52 62v6M30 34h-6M74 34h6M37 19l-4-4M67 49l4 4M67 19l4-4M37 49l-4 4"/>
+ <path class="hi" d="M66 46 L176 132"/>
+ <path class="hi" d="M176 132 L292 92"/>
+ <rect class="dt" x="40" y="132" width="300" height="16"/>
+ <path class="ld" d="M144.5 107.4 A40 40 0 0 1 213.8 119"/>
+ <text class="lb" x="190" y="84">ángulo rasante</text>
+ <text class="lb" x="34" y="86">luz</text>
+ <path class="dl" d="M296 74c14 0 24 8 24 18s-10 18-24 18c-9 0-17-6-21-13"/>
+ <circle class="dl" cx="306" cy="92" r="6"/><circle class="hif" cx="306" cy="92" r="2.6"/>
+ <text class="lb" x="336" y="122" text-anchor="end">tu ojo</text>
+ <text class="lbm" x="44" y="172">Panel pintado</text>
+</svg>`},
+
+"1-8":{b:"Ver qué es una holgura",cap:"La holgura es la ranura entre dos piezas de chapa. Tiene que medir lo mismo arriba que abajo, y lo mismo en el lado izquierdo que en el derecho. Si se abre en cuña, la pieza está mal montada o ha sido desmontada.",svg:`
+<svg viewBox="0 0 360 190" role="img" aria-label="Holgura correcta frente a holgura en cuna entre dos paneles">
+ <rect class="dt" x="22" y="44" width="66" height="100" rx="4"/>
+ <rect class="dt" x="98" y="44" width="66" height="100" rx="4"/>
+ <path class="okl" d="M88 54h10M88 134h10"/>
+ <text class="lbo" x="93" y="36" text-anchor="middle">4 mm</text>
+ <text class="lbo" x="93" y="160" text-anchor="middle">4 mm</text>
+ <text class="lbo" x="93" y="180" text-anchor="middle">CORRECTO</text>
+ <rect class="dt" x="196" y="44" width="62" height="100" rx="4"/>
+ <path class="dt" d="M264 44H338V144H280Z"/>
+ <path class="kol" d="M258 54h8M258 134h21"/>
+ <text class="lbk" x="262" y="36" text-anchor="middle">3 mm</text>
+ <text class="lbk" x="268" y="160" text-anchor="middle">9 mm</text>
+ <text class="lbk" x="268" y="180" text-anchor="middle">EN CUÑA</text>
+</svg>`},
+
+"1-9":{b:"Ver la junta exacta",cap:"El agua no aparece dentro del faro, sino en la ranura donde el faro se encuentra con la parrilla. Míralo con el coche recién lavado o después de llover: es cuando se ve.",svg:`
+<svg viewBox="0 0 360 180" role="img" aria-label="Junta entre el faro delantero y la calandra">
+ <path class="dt" d="M24 46h300c8 0 12 6 12 14v58c0 8-4 14-12 14H24z"/>
+ <path class="dt" d="M38 60h116l22 21-22 21H38z"/>
+ <path class="dl" d="M54 72h58M54 86h42"/>
+ <path class="dl" d="M202 64h116M202 79h116M202 94h116M202 109h116"/>
+ <path class="hi" d="M180 81 L194 62M180 81 L194 106"/>
+ <circle class="hif" cx="188" cy="70" r="3.4"/>
+ <circle class="hif" cx="190" cy="94" r="2.6"/>
+ <path class="ld" d="M188 64 L212 32 L222 32"/>
+ <text class="lb" x="226" y="28">Junta faro-calandra</text>
+ <text class="lb" x="226" y="42">Aquí entra el agua</text>
+ <text class="lbm" x="96" y="152" text-anchor="middle">Faro superior</text>
+ <text class="lbm" x="262" y="152" text-anchor="middle">Calandra</text>
+</svg>`},
+
+"2-2":{b:"Ver dónde está el DOT",cap:"El DOT va grabado en relieve en el flanco del neumático, casi siempre en una sola cara de la rueda. Los cuatro últimos dígitos son la fecha de fabricación. Si un neumático es mucho más viejo que los otros tres, pregunta por qué.",svg:`
+<svg viewBox="0 0 360 210" role="img" aria-label="Codigo DOT en el flanco del neumatico">
+ <path class="dl" d="M10 46 Q180 6 350 46"/>
+ <path class="dl" d="M10 160 Q180 120 350 160"/>
+ <rect class="dt" x="60" y="72" width="240" height="42" rx="6"/>
+ <text class="lb" x="76" y="99" style="font-size:15px;letter-spacing:.06em">DOT  9LK4  A1B2</text>
+ <rect class="hib" x="236" y="78" width="52" height="30" rx="4"/>
+ <text class="lb" x="262" y="99" style="font-size:15px;letter-spacing:.06em" text-anchor="middle">2225</text>
+ <path class="ld" d="M262 108 L262 170 L252 170"/>
+ <text class="lb" x="246" y="166" text-anchor="end">semana 22</text>
+ <text class="lb" x="246" y="182" text-anchor="end">del año 2025</text>
+ <text class="lbm" x="180" y="204" text-anchor="middle">Flanco del neumático</text>
+</svg>`},
+
+"3-11":{b:"Ver dónde está",cap:"Es la banda de plástico o goma que tapa la unión entre el capó y la base del parabrisas, justo donde descansan los limpias. Recorre todo el ancho: pásale el dedo buscando esquinas levantadas.",svg:`
+<svg viewBox="0 0 360 180" role="img" aria-label="Protector de la base del parabrisas entre el capo y la luna">
+ <path class="dt" d="M14 138 L40 116 Q120 96 176 92 L182 116 Q110 122 44 142 Z"/>
+ <path class="hi" d="M176 92 L206 88"/>
+ <path class="dl" d="M206 88 Q268 60 330 28 L346 42 Q286 74 216 110 L182 116"/>
+ <path class="dl" d="M60 132 L96 110M104 128 L140 106"/>
+ <path class="ld" d="M192 88 L168 44 L152 44"/>
+ <text class="lb" x="146" y="40" text-anchor="end">Protector adhesivo</text>
+ <text class="lb" x="146" y="54" text-anchor="end">base del parabrisas</text>
+ <text class="lbm" x="86" y="168" text-anchor="middle">Capó</text>
+ <text class="lbm" x="290" y="108" text-anchor="middle">Parabrisas</text>
+</svg>`},
+
+"3-12":{b:"Ver dónde está",cap:"Es la etiqueta de advertencia del airbag, normalmente con pictograma rojo. Va impresa o pegada en la cara del parasol que mira al ocupante. Es señalización obligatoria: si no está, falta.",svg:`
+<svg viewBox="0 0 360 190" role="img" aria-label="Etiqueta de advertencia de airbag en el parasol del copiloto">
+ <text class="lbm" x="180" y="16" text-anchor="middle">Parasol del copiloto, bajado</text>
+ <rect class="dt" x="52" y="32" width="256" height="112" rx="8"/>
+ <path class="dl" d="M52 46h256"/>
+ <circle class="dl" cx="74" cy="39" r="4"/><circle class="dl" cx="286" cy="39" r="4"/>
+ <rect class="dl" x="182" y="62" width="104" height="52" rx="4"/>
+ <path class="dl" d="M194 76h60M194 88h74M194 100h48"/>
+ <rect class="hib" x="74" y="62" width="88" height="52" rx="4"/>
+ <circle class="hif" cx="98" cy="80" r="7"/>
+ <path class="hi" d="M92 100 Q118 84 142 98"/>
+ <path class="ld" d="M118 114 L118 150"/>
+ <path class="ld" d="M234 114 L234 150"/>
+ <text class="lb" x="118" y="166" text-anchor="middle">Etiqueta airbag</text>
+ <text class="lbm" x="234" y="166" text-anchor="middle">Espejo de cortesía</text>
+</svg>`},
+
+"3-13":{b:"Ver dónde está",cap:"Son dos tapitas de plástico encajadas en la ranura entre el respaldo y el asiento trasero, una en cada plaza lateral. Se sacan con la uña y debajo aparecen las dos barras metálicas del ISOFIX. Si falta una es una pieza de céntimos, pero pídela ahora.",svg:`
+<svg viewBox="0 0 360 220" role="img" aria-label="Tapas de los anclajes ISOFIX en el asiento trasero">
+ <text class="lbm" x="180" y="14" text-anchor="middle">Asiento trasero, de frente</text>
+ <rect class="dt" x="42" y="56" width="276" height="86" rx="10"/>
+ <path class="dl" d="M208 56v86"/>
+ <path class="dl" d="M74 70v58M140 70v58M262 70v58"/>
+ <rect class="dt" x="32" y="156" width="296" height="46" rx="10"/>
+ <rect class="hib" x="106" y="136" width="32" height="22" rx="3"/>
+ <rect class="hib" x="226" y="136" width="32" height="22" rx="3"/>
+ <path class="ld" d="M122 136 L104 40 L96 40"/>
+ <path class="ld" d="M242 136 L260 40 L268 40"/>
+ <text class="lb" x="92" y="36" text-anchor="end">Tapa ISOFIX</text>
+ <text class="lb" x="272" y="36">Tapa ISOFIX</text>
+ <text class="lbm" x="180" y="216" text-anchor="middle">unión respaldo / asiento</text>
+</svg>`},
+
+"4-4":{b:"Ver dónde está cada altavoz",cap:"Ocho altavoces significa ocho posiciones distintas, simétricas salvo el central y el subwoofer. Lleva el balance y el fader a cada extremo y ve confirmando que suena el que toca. Es la única forma de cazar uno mudo antes de firmar.",svg:`
+<svg viewBox="0 0 360 250" role="img" aria-label="Posicion de los ocho altavoces del equipo Sony">
+ <text class="lbm" x="180" y="14" text-anchor="middle">Vista cenital · morro arriba</text>
+ <rect class="dt" x="126" y="30" width="108" height="176" rx="30"/>
+ <path class="dl" d="M140 78h80M138 128h84"/>
+ <circle class="hib" cx="180" cy="50" r="9"/>
+ <circle class="hib" cx="142" cy="68" r="9"/><circle class="hib" cx="218" cy="68" r="9"/>
+ <circle class="hib" cx="130" cy="104" r="9"/><circle class="hib" cx="230" cy="104" r="9"/>
+ <circle class="hib" cx="130" cy="156" r="9"/><circle class="hib" cx="230" cy="156" r="9"/>
+ <circle class="hib" cx="180" cy="192" r="9"/>
+ <path class="ld" d="M180 50 L108 36 L100 36"/>
+ <path class="ld" d="M218 68 L282 54 L290 54"/>
+ <path class="ld" d="M130 104 L74 104 L66 104"/>
+ <path class="ld" d="M130 156 L74 156 L66 156"/>
+ <path class="ld" d="M180 192 L180 224"/>
+ <text class="lb" x="96" y="40" text-anchor="end">salpicadero</text>
+ <text class="lb" x="294" y="44">tweeters</text>
+ <text class="lb" x="294" y="58">pilar A</text>
+ <text class="lb" x="62" y="100" text-anchor="end">puertas</text>
+ <text class="lb" x="62" y="114" text-anchor="end">delanteras</text>
+ <text class="lb" x="62" y="152" text-anchor="end">puertas</text>
+ <text class="lb" x="62" y="166" text-anchor="end">traseras</text>
+ <text class="lb" x="180" y="238" text-anchor="middle">subwoofer maletero</text>
+</svg>`},
+
+"4-23":{b:"Ver la ruleta",cap:"La ruleta está en la propia palanca del limpiaparabrisas, no en la pantalla. Para levantar los limpias: para el coche con el botón de arranque y, antes de tres segundos, gira la ruleta a LO. Suben solos a vertical. Después los apoyas a mano, arrancas y vuelven a su sitio.",svg:`
+<svg viewBox="0 0 360 190" role="img" aria-label="Ruleta de la palanca del limpiaparabrisas con sus posiciones">
+ <rect class="dt" x="12" y="82" width="118" height="26" rx="13"/>
+ <rect class="hib" x="96" y="72" width="48" height="46" rx="8"/>
+ <path class="hi" d="M106 80v30M116 80v30M126 80v30M136 80v30"/>
+ <circle class="dl" cx="252" cy="96" r="54"/>
+ <circle class="dl" cx="252" cy="96" r="42"/>
+ <circle class="hif" cx="252" cy="96" r="4"/>
+ <path class="hi" d="M252 96 L294 104"/>
+ <path class="dl" d="M252 42v10M290 63l-8 7M306 96h-10M290 129l-8-7"/>
+ <text class="lbm" x="252" y="34" text-anchor="middle">OFF</text>
+ <text class="lbm" x="300" y="58">AUTO</text>
+ <text class="lb" x="314" y="100">LO</text>
+ <text class="lbm" x="300" y="142">HI</text>
+ <path class="ld" d="M120 72 L120 38 L132 38"/>
+ <text class="lb" x="136" y="34">Ruleta del limpia</text>
+ <text class="lb" x="136" y="48">delantero</text>
+ <text class="lbm" x="66" y="132" text-anchor="middle">Palanca derecha</text>
+</svg>`}
+};
+
+const KEY='omoda5-entrega-v1';
+let state={fields:{},items:{}};
+
+/* ---------- Render ---------- */
+const root=document.getElementById('sections');
+DATA.forEach((sec,si)=>{
+  const s=document.createElement('section');
+  const secNum=String(si+1).padStart(2,'0');
+  let html=`<div class="sec-head">
+      <span class="sec-num">${secNum}</span>
+      <h2>${sec.n}</h2>
+      <span class="sec-prog" id="p${si}"></span>
+    </div>`;
+  if(sec.note) html+=`<p class="sec-note">${sec.note}</p>`;
+  sec.items.forEach((it,ii)=>{
+    const id=`${si}-${ii}`;
+    const code=`${secNum}.${String(ii+1).padStart(2,'0')}`;
+    html+=`<div class="item" id="i${id}" data-sec="${si}">
+      <div class="code">${code}</div>
+      <div class="body">
+        <span class="t">${it.t}${it.k?'<span class="key">Clave</span>':''}</span>
+        <p class="d">${it.d}</p>
+        ${(it.f||LINKS[id])?`<div class="forum"><b>Foro</b>${it.f||''}${flinks(id)}</div>`:''}
+        ${VIS[id]?`<button class="figbtn" data-fig="${id}" aria-expanded="false">${VIS[id].b}</button>
+        <div class="figwrap" id="f${id}">${VIS[id].svg}<p class="figcap">${VIS[id].cap}</p></div>`:''}
+        <div class="states" role="group" aria-label="Estado de: ${it.t.replace(/"/g,'')}">
+          <button data-id="${id}" data-s="ok" aria-pressed="false">Conforme</button>
+          <button data-id="${id}" data-s="watch" aria-pressed="false">A revisar</button>
+          <button data-id="${id}" data-s="ko" aria-pressed="false">Defecto</button>
+        </div>
+        <textarea class="note" id="n${id}" placeholder="Qué has visto exactamente. Sé concreto: esto es lo que acabará en el acta."></textarea>
+      </div>
+    </div>`;
+  });
+  s.innerHTML=html;
+  root.appendChild(s);
+});
+
+/* ---------- Interacción ---------- */
+root.addEventListener('click',e=>{
+  const fb=e.target.closest('button[data-fig]');
+  if(fb){
+    const id=fb.dataset.fig;
+    const box=document.getElementById('f'+id);
+    const open=box.classList.toggle('show');
+    fb.setAttribute('aria-expanded',String(open));
+    fb.textContent=open?'Ocultar esquema':VIS[id].b;
+    return;
+  }
+  const b=e.target.closest('button[data-s]');
+  if(!b)return;
+  const id=b.dataset.id, s=b.dataset.s;
+  const cur=state.items[id]&&state.items[id].s;
+  const next=(cur===s)?null:s;
+  state.items[id]=state.items[id]||{};
+  state.items[id].s=next;
+  paint(id); tally(); save();
+});
+root.addEventListener('input',e=>{
+  if(!e.target.classList.contains('note'))return;
+  const id=e.target.id.slice(1);
+  state.items[id]=state.items[id]||{};
+  state.items[id].n=e.target.value;
+  save();
+});
+document.querySelectorAll('.fields input').forEach(inp=>{
+  inp.addEventListener('input',()=>{state.fields[inp.id]=inp.value;save();});
+});
+
+function paint(id){
+  const row=document.getElementById('i'+id);
+  const st=(state.items[id]&&state.items[id].s)||null;
+  row.className='item'+(st?' st-'+st:'');
+  row.querySelectorAll('button[data-s]').forEach(b=>{
+    b.setAttribute('aria-pressed',String(b.dataset.s===st));
+  });
+  const note=document.getElementById('n'+id);
+  note.classList.toggle('show', st==='watch'||st==='ko');
+  if(state.items[id]&&state.items[id].n!=null) note.value=state.items[id].n;
+}
+
+function tally(){
+  let o=0,w=0,k=0,total=0;
+  DATA.forEach((sec,si)=>{
+    let done=0;
+    sec.items.forEach((_,ii)=>{
+      total++;
+      const st=(state.items[`${si}-${ii}`]||{}).s;
+      if(st)done++;
+      if(st==='ok')o++; else if(st==='watch')w++; else if(st==='ko')k++;
+    });
+    document.getElementById('p'+si).textContent=`${done}/${sec.items.length}`;
+  });
+  document.getElementById('cOk').textContent=o;
+  document.getElementById('cWatch').textContent=w;
+  document.getElementById('cKo').textContent=k;
+  document.getElementById('cPend').textContent=total-o-w-k;
+  document.getElementById('sOk').style.width=(o/total*100)+'%';
+  document.getElementById('sWatch').style.width=(w/total*100)+'%';
+  document.getElementById('sKo').style.width=(k/total*100)+'%';
+}
+
+/* ---------- Acta ---------- */
+document.getElementById('btnGen').addEventListener('click',()=>{
+  const f=state.fields;
+  const L=[];
+  L.push('ACTA DE RECEPCIÓN DEL VEHÍCULO');
+  L.push('Omoda 5 SHS-H Premium · 1.5 TGDI 165 kW · Negro Ópalo');
+  L.push('');
+  L.push('Fecha: '+(f.fFecha||'—'));
+  L.push('Concesionario: '+(f.fConce||'—'));
+  L.push('Comercial: '+(f.fCom||'—'));
+  L.push('VIN: '+(f.fVin||'—'));
+  L.push('Matrícula: '+(f.fMat||'—'));
+  L.push('Kilómetros en el momento de la entrega: '+(f.fKm||'—'));
+  L.push('');
+  const ko=[],w=[],pend=[];
+  DATA.forEach((sec,si)=>sec.items.forEach((it,ii)=>{
+    const e=state.items[`${si}-${ii}`]||{};
+    const code=`${String(si+1).padStart(2,'0')}.${String(ii+1).padStart(2,'0')}`;
+    const line=`[${code}] ${it.t}`+(e.n?`\n        → ${e.n}`:'');
+    if(e.s==='ko')ko.push(line); else if(e.s==='watch')w.push(line); else if(!e.s)pend.push(`[${code}] ${it.t}`);
+  }));
+  L.push('DEFECTOS DETECTADOS ('+ko.length+')');
+  L.push(ko.length?ko.join('\n'):'Ninguno.');
+  L.push('');
+  L.push('PUNTOS A REVISAR O ACLARAR ('+w.length+')');
+  L.push(w.length?w.join('\n'):'Ninguno.');
+  L.push('');
+  if(ko.length||w.length){
+    L.push('Solicito que los puntos anteriores queden recogidos en el documento de');
+    L.push('entrega, con fecha comprometida de reparación o aclaración, antes de');
+    L.push('dar por cerrada la conformidad del vehículo.');
+    L.push('');
+  }
+  L.push('SIN COMPROBAR ('+pend.length+')');
+  L.push(pend.length?pend.join('\n'):'Ninguno. Revisión completa.');
+  const out=document.getElementById('actaOut');
+  out.value=L.join('\n');
+  out.classList.add('show');
+  out.scrollIntoView({behavior:'smooth',block:'nearest'});
+});
+
+document.getElementById('btnCopy').addEventListener('click',async()=>{
+  const out=document.getElementById('actaOut');
+  if(!out.value){document.getElementById('btnGen').click();}
+  const btn=document.getElementById('btnCopy');
+  try{
+    await navigator.clipboard.writeText(out.value);
+    btn.textContent='Copiado';
+  }catch(err){
+    out.select(); btn.textContent='Selecciona y copia';
+  }
+  setTimeout(()=>{btn.textContent='Copiar';},1800);
+});
+
+document.getElementById('btnReset').addEventListener('click',()=>{
+  if(!confirm('Se borran todas las marcas y notas. ¿Seguir?'))return;
+  state={fields:{},items:{}};
+  document.querySelectorAll('.fields input').forEach(i=>i.value='');
+  document.querySelectorAll('.note').forEach(n=>{n.value='';n.classList.remove('show');});
+  DATA.forEach((sec,si)=>sec.items.forEach((_,ii)=>paint(`${si}-${ii}`)));
+  document.getElementById('actaOut').classList.remove('show');
+  tally(); save();
+});
+
+/* ---------- Persistencia (localStorage: funciona en cualquier hosting) ---------- */
+function save(){
+  try{ localStorage.setItem(KEY, JSON.stringify(state)); }catch(e){}
+}
+function load(){
+  try{
+    const raw=localStorage.getItem(KEY);
+    if(raw){
+      state=JSON.parse(raw);
+      state.fields=state.fields||{}; state.items=state.items||{};
+      Object.keys(state.fields).forEach(k=>{
+        const el=document.getElementById(k); if(el)el.value=state.fields[k];
+      });
+    }
+  }catch(e){}
+  DATA.forEach((sec,si)=>sec.items.forEach((_,ii)=>paint(`${si}-${ii}`)));
+  tally();
+}
+load();
+</script>
+</body>
+</html>
