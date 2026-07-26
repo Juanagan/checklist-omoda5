@@ -2,7 +2,7 @@
    Estrategia: red primero, caché como respaldo. Así siempre ves la última
    versión si hay cobertura, y sigue funcionando en el sótano del concesionario.
    Al publicar cambios, sube el número de versión de esta línea. */
-const CACHE = 'checklist-omoda5-v2.4.0';
+const CACHE = 'checklist-omoda5-v2.5.0';
 
 /* Tienen que existir sí o sí: si uno falla, no se instala la caché. */
 const CORE = [
