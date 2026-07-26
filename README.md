@@ -7,7 +7,7 @@ Pensada para las tres motorizaciones del Omoda 5: gasolina, híbrido SHS-H y el�
 
 ## Qué es
 
-129 puntos organizados en siete bloques, desde la documentación hasta la prueba en marcha.
+131 puntos organizados en siete bloques, desde la documentación hasta la prueba en marcha.
 No es una lista genérica de compra de coche: cada aviso marcado como **Foro** corresponde a
 una incidencia real publicada por propietarios en [clubomoda5.com](https://www.clubomoda5.com/),
 con enlace al hilo donde se cuenta.
